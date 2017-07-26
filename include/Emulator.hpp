@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include <Cartridge.hpp>
+
 class Emulator {
 public:
     Emulator();
@@ -10,7 +12,7 @@ public:
     std::string rom_path;
 
 private:
-    // Attempts to load file. Accepts iNES files (typically denoted .nes in the file extension).
-    void loadROM(const std::string rom_path);
+
+
 
 };
