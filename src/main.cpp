@@ -20,7 +20,7 @@ void handleArguments(const int& argc, char* argv[], Emulator& emulator) {
         std::string arg = argv[i];
 
         if (arg == "-h"
-            || arg == "--help") {
+             || arg == "--help") {
             printHelpMessage();
             exit(EXIT_SUCCESS);
         }
@@ -32,20 +32,24 @@ void handleArguments(const int& argc, char* argv[], Emulator& emulator) {
     }
 }
 
+// Prints failure message, and then waits until Enter ('\n') is pressed,
+// so there's time for the message to be read, in case the console closes itself immediately afterwards.
+// It turns out to be simpler to write this portably, if we wait for Enter, rather than "any key".
+void printFailureAndWait(const std::runtime_error& e) {
+    std::cerr
+        << "\nFailed to run (" << e.what() << "). Shutting down.\n"
+        << "Press Enter to exit . . . " << std::flush;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Wait for enter key.
+}
+
 int main(const int argc, char* argv[]) {
     Emulator emulator;
     handleArguments(argc, argv, emulator);
 
     try {
-        emulator.run();
-    }
+        emulator.run(); }
     catch (const std::runtime_error& e) {
-        std::cerr << "\nFailed to run (" << e.what() << "). Shutting down." << std::endl;
-        // The pause here is to make sure the error can be read.
-        std::cout << "Press Enter to exit . . . ";
-        // Waits until Enter ('\n') is pressed. It turns out to be simpler
-        // to write this portably, if we wait for Enter, rather than "any key".
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        printFailureAndWait(e);
         return EXIT_FAILURE;
     }
 }
