@@ -13,10 +13,10 @@ private:
     // Sizes in bytes.
     static constexpr int MAX_FILE_SIZE = 0x100000, // Max NES ROM file size accepted. 1 MB.
                                                    // The biggest official NES ROM is 6 Mb.
-                         HEADER_SIZE  =     16, // Size of iNES header. 16 B.
-                         TRAINER_SIZE =    512, // Size of space allocated for trainer. 512 B.
-                         PRG_PAGE_SIZE = 16384, // PRG ROM size. 16 KB.
-                         CHR_PAGE_SIZE =  8192; // CHR ROM size.  8 KB.
+                         HEADER_SIZE   =     0x10, // Size of iNES header. 16 B.
+                         TRAINER_SIZE  =    0x200, // Size of space allocated for trainer. 512 B.
+                         PRG_PAGE_SIZE =   0x4000, // PRG ROM size. 16 KB.
+                         CHR_PAGE_SIZE =   0x2000; // CHR ROM size.  8 KB.
 
     // Attempts to load file. Accepts iNES files (typically denoted .nes in the file extension).
     void loadRom(const std::string& rom_path);
