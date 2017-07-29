@@ -14,12 +14,9 @@ void Cartridge::loadRom(const std::string& rom_path) {
     checkStream(rom, rom_path);
     checkFileSize(rom);
 
-    if (header.trainer) {
-        loadTrainer(rom); }
+    loadHeader(rom);
     loadPRG(rom);
     loadCHR(rom);
-
-
 
     std::cout << "File loaded." << std::endl;
 }
@@ -53,43 +50,25 @@ void Cartridge::checkFileSize(std::ifstream& rom) {
 }
 
 void Cartridge::loadHeader(std::ifstream& rom) {
-    std::array<char, HEADER_SIZE> buffer;
-    rom.read(buffer.data(), buffer.size());
+    std::array<uint8_t, HEADER_SIZE> buffer;
+    rom.read(reinterpret_cast<char *>(buffer.data()), buffer.size());
 
-    header = Header(buffer); // TODO: Rework.
-}
-
-void Cartridge::loadTrainer(std::ifstream& rom) {
-    std::array<char, TRAINER_SIZE> buffer;
-    rom.read(buffer.data(), buffer.size());
-
-    // TODO
+    header.load(buffer);
 }
 
 void Cartridge::loadPRG(std::ifstream& rom) {
-    std::array<char, PRG_PAGE_SIZE> buffer;
-    for (int i = 0; i < header.prg_rom_pages; ++i) {
-        rom.read(buffer.data(), buffer.size());
-
-        // TODO
-    }
+    prg_rom.resize(PRG_PAGE_SIZE * header.prg_rom_pages);
+    rom.read(reinterpret_cast<char *>(prg_rom.data()), prg_rom.size());
 }
 
 void Cartridge::loadCHR(std::ifstream& rom) {
-    std::array<char, CHR_PAGE_SIZE> buffer;
-
-    for (int i = 0; i < header.chr_rom_pages; ++i) {
-        rom.read(buffer.data(), buffer.size());
-
-        // TODO
-    }
+    chr_rom.resize(CHR_PAGE_SIZE * header.chr_rom_pages);
+    rom.read(reinterpret_cast<char *>(chr_rom.data()), chr_rom.size());
 }
 
 
 
-Cartridge::Header::Header() {}
-
-Cartridge::Header::Header(const std::array<char, HEADER_SIZE>& input) {
+void Cartridge::Header::load(const std::array<uint8_t, HEADER_SIZE>& input) {
     checkHeader(input);
 
     prg_rom_pages = input[4];
@@ -108,7 +87,7 @@ Cartridge::Header::Header(const std::array<char, HEADER_SIZE>& input) {
 }
 
 // The first four bytes of the iNES header are always the same.
-void Cartridge::Header::checkHeader(const std::array<char, HEADER_SIZE>& input) {
+void Cartridge::Header::checkHeader(const std::array<uint8_t, HEADER_SIZE>& input) {
     if (    input[0] == 0x4E    // N
          && input[1] == 0x45    // E
          && input[2] == 0x53    // S
