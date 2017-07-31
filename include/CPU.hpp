@@ -56,15 +56,14 @@ private:
     // TODO: Add interface to status flags
     uint8_t r_p;
 
-    typedef void (CPU::*Instruction0)();        // Function taking 0 arguments.
-    typedef void (CPU::*Instruction1)(uint8_t); // Function taking 1 argument.
+
 
     // Addressing Modes
-    void implied(Instruction0 instruction) {
+    void implied(void (CPU::*instruction)()) {
         (this->*instruction)();
         ++r_pc;
     }
-    void accumulator(Instruction1 instruction) {
+    void accumulator(void (CPU::*instruction)(const uint8_t)) {
         (this->*instruction)(r_a);
         ++r_pc;
     }
@@ -73,7 +72,7 @@ private:
     //void zeroPageX(Instruction instruction);
     //void zeroPageY(Instruction instruction);
     //void relative(Instruction instruction);
-    void absolute(Instruction1 instruction) {
+    void absolute(void (CPU::*instruction)(const uint16_t&)) {
         const uint16_t address = read16(r_pc + 1);
         (this->*instruction)(address);
         r_pc += 3;
@@ -83,6 +82,8 @@ private:
     //void indirect(Instruction instruction);
     //void indexedIndirect(Instruction instruction);
     //void indirectIndexed(Instruction instruction);
+
+
 
     // Instructions
     void ADC(); // Add with Carry
