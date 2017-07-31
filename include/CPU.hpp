@@ -17,13 +17,19 @@ public:
 
 private:
     void execute(const uint8_t& opcode);
+
     // Push value on the stack and decrement stack pointer.
     void push(const uint8_t& value);
     // Increment stack pointer and pop value from the stack.
     uint8_t pop();
-    // Return 16-bit value from 8-bit values at address+1 and address,
-    // concatenated with bitwise OR in little endian order.
+
+    // Return 16-bit value concatenated, from 8-bit values at address+1 and address,
+    // with bitwise OR in little endian order.
     uint16_t read16(const uint16_t& address);
+    // Splits 16-bit value into two 8-bit values and push them to stack.
+    void push16(const uint16_t& value);
+    // Pops two 8-bit values and returns them concatenated as a 16-bit value.
+    uint16_t pop16();
 
     Memory* memory;
 
