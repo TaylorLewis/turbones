@@ -2,17 +2,15 @@
 
 #include <string>
 
-#include <Cartridge.hpp>
+#include <NES.hpp>
 
 class Emulator {
 public:
-    Emulator();
     void run();
 
     std::string rom_path;
 
 private:
-
-
+    NES nes;
 
 };

@@ -1,13 +1,8 @@
 #include "Emulator.hpp"
 
-Emulator::Emulator() {
-
-}
-
 void Emulator::run() {
-    Cartridge cart(rom_path);
-
-
+    nes.load(rom_path);
+    nes.run();
 }
 
 
