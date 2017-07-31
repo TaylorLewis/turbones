@@ -43,7 +43,7 @@ void CPU::execute(const uint8_t& opcode) {
     }
 }
 
-void CPU::push(uint8_t & value) {
+void CPU::push(const uint8_t & value) {
     memory->write(0x100 + r_sp, value);
     --r_sp;
 }
@@ -51,6 +51,12 @@ void CPU::push(uint8_t & value) {
 uint8_t CPU::pop() {
     ++r_sp;
     return memory->read(0x100 + r_sp);
+}
+
+uint16_t CPU::read16(const uint16_t & address) {
+    uint16_t lo = memory->read(address);
+    uint16_t hi = memory->read(address + 1);
+    return (hi << 8) | lo; // Little endian
 }
 
 
