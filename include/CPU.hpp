@@ -14,9 +14,12 @@ public:
 
     // Execute next instruction.
     void step();
-    void execute(const uint8_t& opcode);
 
 private:
+    void execute(const uint8_t& opcode);
+    void push(uint8_t& value);
+    uint8_t pop();
+
     Memory* memory;
 
     // Tracks number of emulated cycles.

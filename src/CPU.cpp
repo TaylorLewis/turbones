@@ -35,3 +35,13 @@ void CPU::execute(const uint8_t& opcode) {
             std::cerr << "Unsupported opcode: " << instruction_table[opcode] << std::endl;
     }
 }
+
+void CPU::push(uint8_t & value) {
+    memory->write(0x100 + r_sp, value);
+    --r_sp;
+}
+
+uint8_t CPU::pop() {
+    ++r_sp;
+    return memory->read(0x100 + r_sp);
+}
