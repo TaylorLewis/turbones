@@ -31,6 +31,13 @@ void CPU::execute(const uint8_t& opcode) {
     switch (opcode) {
 
 
+
+    case 0x48:
+        implied(&CPU::PHA);
+        break;
+
+
+
         default:
             std::cerr << "Unsupported opcode: " << instruction_table[opcode] << std::endl;
     }
@@ -188,8 +195,8 @@ void CPU::ORA()
 {
 }
 
-void CPU::PHA()
-{
+void CPU::PHA() {
+    push(r_sp);
 }
 
 void CPU::PHP()
