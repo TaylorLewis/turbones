@@ -45,3 +45,229 @@ uint8_t CPU::pop() {
     ++r_sp;
     return memory->read(0x100 + r_sp);
 }
+
+
+
+void CPU::ADC()
+{
+}
+
+void CPU::AND()
+{
+}
+
+void CPU::ASL()
+{
+}
+
+void CPU::BCC()
+{
+}
+
+void CPU::BCS()
+{
+}
+
+void CPU::BEQ()
+{
+}
+
+void CPU::BIT()
+{
+}
+
+void CPU::BMI()
+{
+}
+
+void CPU::BNE()
+{
+}
+
+void CPU::BPL()
+{
+}
+
+void CPU::BRK()
+{
+}
+
+void CPU::BVC()
+{
+}
+
+void CPU::BVS()
+{
+}
+
+void CPU::CLC()
+{
+}
+
+void CPU::CLD()
+{
+}
+
+void CPU::CLI()
+{
+}
+
+void CPU::CLV()
+{
+}
+
+void CPU::CMP()
+{
+}
+
+void CPU::CPX()
+{
+}
+
+void CPU::CPY()
+{
+}
+
+void CPU::DEC()
+{
+}
+
+void CPU::DEX()
+{
+}
+
+void CPU::DEY()
+{
+}
+
+void CPU::EOR()
+{
+}
+
+void CPU::INC()
+{
+}
+
+void CPU::INX()
+{
+}
+
+void CPU::INY()
+{
+}
+
+void CPU::JMP()
+{
+}
+
+void CPU::JSR()
+{
+}
+
+void CPU::LDA()
+{
+}
+
+void CPU::LDX()
+{
+}
+
+void CPU::LDY()
+{
+}
+
+void CPU::LSR()
+{
+}
+
+void CPU::NOP()
+{
+}
+
+void CPU::ORA()
+{
+}
+
+void CPU::PHA()
+{
+}
+
+void CPU::PHP()
+{
+}
+
+void CPU::PLA()
+{
+}
+
+void CPU::PLP()
+{
+}
+
+void CPU::ROL()
+{
+}
+
+void CPU::ROR()
+{
+}
+
+void CPU::RTI()
+{
+}
+
+void CPU::RTS()
+{
+}
+
+void CPU::SBC()
+{
+}
+
+void CPU::SEC()
+{
+}
+
+void CPU::SED()
+{
+}
+
+void CPU::SEI()
+{
+}
+
+void CPU::STA()
+{
+}
+
+void CPU::STX()
+{
+}
+
+void CPU::STY()
+{
+}
+
+void CPU::TAX()
+{
+}
+
+void CPU::TAY()
+{
+}
+
+void CPU::TSX()
+{
+}
+
+void CPU::TXA()
+{
+}
+
+void CPU::TXS()
+{
+}
+
+void CPU::TYA()
+{
+}

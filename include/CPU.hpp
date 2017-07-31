@@ -55,23 +55,81 @@ private:
     typedef void (CPU::*Instruction1)(uint8_t); // Function taking 1 argument.
 
     // Addressing Modes 
-    void implied(Instruction0 instruction) { // Accumulator
+    void implied(Instruction0 instruction) {
         (this->*instruction)();
         ++r_pc;
     }
-    void accumulator(Instruction1 instruction) { // Accumulator
+    void accumulator(Instruction1 instruction) {
         (this->*instruction)(r_a);
         ++r_pc;
     }
-    //void immediate(Instruction instruction);       // Immediate
-    //void zeroPage(Instruction instruction);        // Zero Page
-    //void zeroPageX(Instruction instruction);       // Zero Page, X
-    //void zeroPageY(Instruction instruction);       // Zero Page, Y
-    //void relative(Instruction instruction);        // Relative
-    //void absolute(Instruction instruction);        // Absolute
-    //void absoluteX(Instruction instruction);       // Absolute, X
-    //void absoluteY(Instruction instruction);       // Absolute, Y
-    //void indirect(Instruction instruction);        // Indirect
-    //void indexedIndirect(Instruction instruction); // Indexed Indirect
-    //void indirectIndexed(Instruction instruction); // Indirect Indexed
+    //void immediate(Instruction instruction);
+    //void zeroPage(Instruction instruction);
+    //void zeroPageX(Instruction instruction);
+    //void zeroPageY(Instruction instruction);
+    //void relative(Instruction instruction);
+    //void absolute(Instruction instruction);
+    //void absoluteX(Instruction instruction);
+    //void absoluteY(Instruction instruction);
+    //void indirect(Instruction instruction);
+    //void indexedIndirect(Instruction instruction);
+    //void indirectIndexed(Instruction instruction);
+
+    // Instructions
+    void ADC(); // Add with Carry
+    void AND(); // Logical AND
+    void ASL(); // Arithmetic Shift Left
+    void BCC(); // Branch if Carry Clear
+    void BCS(); // Branch if Carry Set
+    void BEQ(); // Branch if Equal
+    void BIT(); // Bit Test
+    void BMI(); // Branch if Minus
+    void BNE(); // Branch if Not Equal
+    void BPL(); // Branch if Positive
+    void BRK(); // Force Interrupt
+    void BVC(); // Branch if Overflow Clear
+    void BVS(); // Branch if Overflow Set
+    void CLC(); // Clear Carry Flag
+    void CLD(); // Clear Decimal Mode
+    void CLI(); // Clear Interrupt Disable
+    void CLV(); // Clear Overflow Flag
+    void CMP(); // Compare
+    void CPX(); // Compare X Register
+    void CPY(); // Compare Y Register
+    void DEC(); // Decrement Memory
+    void DEX(); // Decrement X Register
+    void DEY(); // Decrement Y Register
+    void EOR(); // Exclusive OR
+    void INC(); // Increment Memory
+    void INX(); // Increment X Register
+    void INY(); // Increment Y Register
+    void JMP(); // Jump
+    void JSR(); // Jump to Subroutine
+    void LDA(); // Load Accumulator
+    void LDX(); // Load X Register
+    void LDY(); // Load Y Register
+    void LSR(); // Logical Shift Right
+    void NOP(); // No Operation
+    void ORA(); // Logical Inclusive OR
+    void PHA(); // Push Accumulator
+    void PHP(); // Push Processor Status
+    void PLA(); // Pull Accumulator
+    void PLP(); // Pull Processor Status
+    void ROL(); // Rotate Left
+    void ROR(); // Rotate Right
+    void RTI(); // Return from Interrupt
+    void RTS(); // Return from Subroutine
+    void SBC(); // Subtract with Carry
+    void SEC(); // Set Carry Flag
+    void SED(); // Set Decimal Flag
+    void SEI(); // Set Interrupt Disable
+    void STA(); // Store Accumulator
+    void STX(); // Store X Register
+    void STY(); // Store Y Register
+    void TAX(); // Transfer Accumulator to X
+    void TAY(); // Transfer Accumulator to Y
+    void TSX(); // Transfer Stack Pointer to X
+    void TXA(); // Transfer X to Accumulator
+    void TXS(); // Transfer X to Stack Pointer
+    void TYA(); // Transfer Y to Accumulator
 };
