@@ -54,8 +54,8 @@ uint8_t CPU::pop() {
 }
 
 uint16_t CPU::read16(const uint16_t & address) {
-    uint16_t lo = memory->read(address);
-    uint16_t hi = memory->read(address + 1);
+    const uint16_t lo = memory->read(address);
+    const uint16_t hi = memory->read(address + 1);
     return (hi << 8) | lo; // Little endian
 }
 

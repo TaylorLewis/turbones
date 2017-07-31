@@ -74,7 +74,8 @@ private:
     //void zeroPageY(Instruction instruction);
     //void relative(Instruction instruction);
     void absolute(Instruction1 instruction) {
-        (this->*instruction)(read16(r_pc + 1));
+        const uint16_t address = read16(r_pc + 1);
+        (this->*instruction)(address);
         r_pc += 3;
     }
     //void absoluteX(Instruction instruction);
