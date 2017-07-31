@@ -2,41 +2,25 @@
 
 #include <stdint.h>
 #include <array>
+#include <memory>
+#include <functional>
+
+#include <Memory.hpp>
 
 // The NES CPU, the 2A03 (or 2A07 for PAL), is based on the 6502.
 class CPU {
 public:
-    CPU();
+    CPU(Memory* mem);
 
+    // Execute next instruction.
+    void step();
+    void execute(const uint8_t& opcode);
 
 private:
+    Memory* memory;
+
     // Tracks number of emulated cycles.
     int cycles;
-
-    // Memory.
-    //   $0000 -$07FF
-    //    2 KB internal RAM.
-    //     $0000-$00FF
-    //      Zero page. Addressable with a single byte.
-    //   $0800-$1FFF
-    //    Mirrors (3) of RAM.
-    //     $0800-$0FFF
-    //      Mirror 1.
-    //     $1000-$17FF
-    //      Mirror 2.
-    //     $1800-$1FFF
-    //      Mirror 3.
-    //   $2000-$2007
-    //    PPU registers.
-    //   $2008-$3FFF
-    //    Mirrors (1023) of PPU registers.
-    //   $4000-$4017
-    //    APU and I/O registers
-    //   $4018-$401F
-    //    APU and I/O functionality that is normally disabled.
-    //   $4020-$FFFF
-    //    Cartridge space: PRG ROM, PRG RAM, and mapper registers. 
-    std::array<uint8_t, 0xFFFF> memory; // = 65536 = 64 KB.
 
     // The following are the registers - denoted with the 'r_' prefix.
     // Accumulator. Used for arithmethical and logical operations.
@@ -51,7 +35,7 @@ private:
     // Status register.
     // Each bit is a boolean flag. Enumerating the bits:
     // 76543210
-    // NV BDIZC
+    // NV-BDIZC
     // (with 0 being the least significant bit)
     // 0: Carry flag.
     // 1: Zero flag. Set if the result of the last instruction was 0.
@@ -60,6 +44,31 @@ private:
     // 4: Break Command.
     // 5: (Unused)
     // 6: Overflow flag. 
-    // 7: Negative flag. 
+    // 7: Negative flag. Set if the result of the last operation was negative.
+    // TODO: Add interface to status flags
     uint8_t r_p;
+
+    typedef void (CPU::*Instruction0)();        // Function taking 0 arguments.
+    typedef void (CPU::*Instruction1)(uint8_t); // Function taking 1 argument.
+
+    // Addressing Modes 
+    void implied(Instruction0 instruction) { // Accumulator
+        (this->*instruction)();
+        ++r_pc;
+    }
+    void accumulator(Instruction1 instruction) { // Accumulator
+        (this->*instruction)(r_a);
+        ++r_pc;
+    }
+    //void immediate(Instruction instruction);       // Immediate
+    //void zeroPage(Instruction instruction);        // Zero Page
+    //void zeroPageX(Instruction instruction);       // Zero Page, X
+    //void zeroPageY(Instruction instruction);       // Zero Page, Y
+    //void relative(Instruction instruction);        // Relative
+    //void absolute(Instruction instruction);        // Absolute
+    //void absoluteX(Instruction instruction);       // Absolute, X
+    //void absoluteY(Instruction instruction);       // Absolute, Y
+    //void indirect(Instruction instruction);        // Indirect
+    //void indexedIndirect(Instruction instruction); // Indexed Indirect
+    //void indirectIndexed(Instruction instruction); // Indirect Indexed
 };
