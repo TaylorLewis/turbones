@@ -59,7 +59,7 @@ private:
     typedef void (CPU::*Instruction0)();        // Function taking 0 arguments.
     typedef void (CPU::*Instruction1)(uint8_t); // Function taking 1 argument.
 
-    // Addressing Modes 
+    // Addressing Modes
     void implied(Instruction0 instruction) {
         (this->*instruction)();
         ++r_pc;
@@ -73,7 +73,10 @@ private:
     //void zeroPageX(Instruction instruction);
     //void zeroPageY(Instruction instruction);
     //void relative(Instruction instruction);
-    //void absolute(Instruction instruction);
+    void absolute(Instruction1 instruction) {
+        (this->*instruction)(read16(r_pc + 1));
+        r_pc += 3;
+    }
     //void absoluteX(Instruction instruction);
     //void absoluteY(Instruction instruction);
     //void indirect(Instruction instruction);
