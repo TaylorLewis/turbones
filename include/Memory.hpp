@@ -3,11 +3,15 @@
 #include <stdint.h>
 #include <array>
 
+#include <Mapper0.hpp>
+
 // Memory.
 //   $0000 -$07FF
 //    2 KB internal RAM.
 //     $0000-$00FF
 //      Zero page. Addressable with a single byte.
+//     $0100–$01FF
+//      Stack memory.
 //   $0800-$1FFF
 //    Mirrors (3) of RAM.
 //   $2000-$2007
@@ -22,11 +26,13 @@
 //    Cartridge space: PRG ROM, PRG RAM, and mapper registers. 
 class Memory {
 public:
-    Memory();
+    Memory(Mapper0* map);
 
-    uint8_t read(const uint16_t address);
-    void write(const uint16_t address, const uint8_t value);
+    uint8_t read(const uint16_t& address);
+    void write(const uint16_t& address, const uint8_t& value);
 
 private:
+    Mapper0* mapper;
+
     std::array<uint8_t, 0x800> ram;
 };
