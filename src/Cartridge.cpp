@@ -4,6 +4,8 @@
 
 #include "Cartridge.hpp"
 
+Cartridge::Cartridge() {};
+
 Cartridge::Cartridge(const std::string& rom_path) {
     loadRom(rom_path);
 }
@@ -50,7 +52,7 @@ void Cartridge::checkFileSize(std::ifstream& rom) {
 }
 
 void Cartridge::loadHeader(std::ifstream& rom) {
-    std::array<uint8_t, HEADER_SIZE> buffer;
+    std::array<uint8_t, Header::HEADER_SIZE> buffer;
     rom.read(reinterpret_cast<char *>(buffer.data()), buffer.size());
 
     header.load(buffer);
