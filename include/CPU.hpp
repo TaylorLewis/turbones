@@ -69,8 +69,8 @@ private:
         (this->*instruction)();
         ++r_pc;
     }
-    void accumulator(void (CPU::*instruction)(const uint8_t)) {
-        (this->*instruction)(r_a);
+    void accumulator(void (CPU::*instruction)()) { // Special type of 'implied'. May be unnecessary.
+        (this->*instruction)();
         ++r_pc;
     }
     //void immediate(Instruction instruction);
