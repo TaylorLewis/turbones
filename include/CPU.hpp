@@ -18,13 +18,18 @@ public:
 private:
     void execute(const uint8_t& opcode);
 
+    // Returns value at address in the program counter (PC), then increments the PC.
+    uint8_t fetch();
+    // Returns 16-bit value, concatenated (in little endian order)
+    // from 8-bit values located at addresses PC+1 and PC.
+    uint16_t fetch16();
     // Push value on the stack and decrement stack pointer.
     void push(const uint8_t& value);
     // Increment stack pointer and pop value from the stack.
     uint8_t pop();
 
-    // Return 16-bit value concatenated, from 8-bit values at address+1 and address,
-    // with bitwise OR in little endian order.
+    // Returns 16-bit value, concatenated (in little endian order)
+    // from 8-bit values located at address+1 and address.
     uint16_t read16(const uint16_t& address);
     // Splits 16-bit value into two 8-bit values and push them to stack.
     void push16(const uint16_t& value);

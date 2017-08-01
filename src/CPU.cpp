@@ -1060,6 +1060,18 @@ void CPU::execute(const uint8_t& opcode) {
     }
 }
 
+uint8_t CPU::fetch() {
+    const uint8_t value = memory->read(r_pc);
+    ++r_pc;
+    return value;
+}
+
+uint16_t CPU::fetch16() {
+    const uint16_t value = read16(r_pc);
+    r_pc += 2;
+    return value;
+}
+
 void CPU::push(const uint8_t& value) {
     memory->write(0x100 + r_sp, value);
     --r_sp;
