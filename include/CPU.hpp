@@ -73,7 +73,11 @@ private:
         ++r_pc;
         (this->*instruction)();
     }
-    //void immediate(Instruction instruction);
+    void immediate(void (CPU::*instruction)(const uint8_t)) {
+        const uint8_t value = memory->read(r_pc + 1);
+        r_pc += 2;
+        (this->*instruction)(value);
+    }
     //void zeroPage(Instruction instruction);
     //void zeroPageX(Instruction instruction);
     //void zeroPageY(Instruction instruction);
