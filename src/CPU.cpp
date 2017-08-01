@@ -17,6 +17,47 @@ CPU::CPU(Memory* mem) {
     r_pc = 0x8000;
 }
 
+uint8_t CPU::fetch() {
+    const uint8_t value = memory->read(r_pc);
+    ++r_pc;
+    return value;
+}
+
+uint16_t CPU::fetch16() {
+    const uint16_t value = read16(r_pc);
+    r_pc += 2;
+    return value;
+}
+
+void CPU::push(const uint8_t& value) {
+    memory->write(0x100 + r_sp, value);
+    --r_sp;
+}
+
+uint8_t CPU::pop() {
+    ++r_sp;
+    return memory->read(0x100 + r_sp);
+}
+
+uint16_t CPU::read16(const uint16_t& address) {
+    const uint16_t lo = memory->read(address);
+    const uint16_t hi = memory->read(address + 1);
+    return (hi << 8) | lo; // Little endian
+}
+
+void CPU::push16(const uint16_t& value) {
+    const uint8_t hi = value >> 8;
+    const uint8_t lo = value & 0x00FF;
+    push(hi);
+    push(lo);
+}
+
+uint16_t CPU::pop16() {
+    const uint16_t lo = pop();
+    const uint16_t hi = pop();
+    return (hi << 8) | lo;
+}
+
 void CPU::step() {
     // TODO: Handle interrupts
 
@@ -1058,47 +1099,6 @@ void CPU::execute(const uint8_t& opcode) {
             std::cerr << "Unsupported instruction: " << instruction_table[opcode]
                 << ". Opcode: " << std::hex << (int)opcode << std::endl;
     }
-}
-
-uint8_t CPU::fetch() {
-    const uint8_t value = memory->read(r_pc);
-    ++r_pc;
-    return value;
-}
-
-uint16_t CPU::fetch16() {
-    const uint16_t value = read16(r_pc);
-    r_pc += 2;
-    return value;
-}
-
-void CPU::push(const uint8_t& value) {
-    memory->write(0x100 + r_sp, value);
-    --r_sp;
-}
-
-uint8_t CPU::pop() {
-    ++r_sp;
-    return memory->read(0x100 + r_sp);
-}
-
-uint16_t CPU::read16(const uint16_t& address) {
-    const uint16_t lo = memory->read(address);
-    const uint16_t hi = memory->read(address + 1);
-    return (hi << 8) | lo; // Little endian
-}
-
-void CPU::push16(const uint16_t& value) {
-    const uint8_t hi = value >> 8;
-    const uint8_t lo = value & 0x00FF;
-    push(hi);
-    push(lo);
-}
-
-uint16_t CPU::pop16() {
-    const uint16_t lo = pop();
-    const uint16_t hi = pop();
-    return (hi << 8) | lo;
 }
 
 
