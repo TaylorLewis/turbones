@@ -66,12 +66,12 @@ private:
 
     // Addressing Modes
     void implied(void (CPU::*instruction)()) {
-        (this->*instruction)();
         ++r_pc;
+        (this->*instruction)();
     }
     void accumulator(void (CPU::*instruction)()) { // Special type of 'implied'. May be unnecessary.
-        (this->*instruction)();
         ++r_pc;
+        (this->*instruction)();
     }
     //void immediate(Instruction instruction);
     //void zeroPage(Instruction instruction);
@@ -80,8 +80,8 @@ private:
     //void relative(Instruction instruction);
     void absolute(void (CPU::*instruction)(const uint16_t&)) {
         const uint16_t address = read16(r_pc + 1);
-        (this->*instruction)(address);
         r_pc += 3;
+        (this->*instruction)(address);
     }
     //void absoluteX(Instruction instruction);
     //void absoluteY(Instruction instruction);
