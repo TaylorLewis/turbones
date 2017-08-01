@@ -78,9 +78,21 @@ private:
         r_pc += 2;
         (this->*instruction)(value);
     }
-    //void zeroPage(Instruction instruction);
-    //void zeroPageX(Instruction instruction);
-    //void zeroPageY(Instruction instruction);
+    void zeroPage(void (CPU::*instruction)(const uint8_t)) {
+        const uint16_t address = memory->read(r_pc + 1);
+        r_pc += 2;
+        (this->*instruction)(address);
+    }
+    void zeroPageX(void (CPU::*instruction)(const uint8_t)) {
+        const uint16_t address = memory->read(r_pc + 1) + r_x;
+        r_pc += 2;
+        (this->*instruction)(address);
+    }
+    void zeroPageY(void (CPU::*instruction)(const uint8_t)) {
+        const uint16_t address = memory->read(r_pc + 1) + r_y;
+        r_pc += 2;
+        (this->*instruction)(address);
+    }
     //void relative(Instruction instruction);
     void absolute(void (CPU::*instruction)(const uint16_t&)) {
         const uint16_t address = read16(r_pc + 1);
