@@ -92,7 +92,10 @@ private:
         const uint16_t address = fetch() + r_y;
         (this->*instruction)(address);
     }
-    //void relative(Instruction instruction);
+    void relative(void (CPU::*instruction)(const int8_t)) {
+        int8_t offset = (int8_t)fetch();
+        (this->*instruction)(offset);
+    }
     void absolute(void (CPU::*instruction)(const uint16_t&)) {
         const uint16_t address = fetch16();
         (this->*instruction)(address);
