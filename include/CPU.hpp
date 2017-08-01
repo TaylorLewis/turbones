@@ -71,37 +71,30 @@ private:
 
     // Addressing Modes
     void implied(void (CPU::*instruction)()) {
-        ++r_pc;
         (this->*instruction)();
     }
     void accumulator(void (CPU::*instruction)()) { // Special type of 'implied'. May be unnecessary.
-        ++r_pc;
         (this->*instruction)();
     }
     void immediate(void (CPU::*instruction)(const uint8_t)) {
-        const uint8_t value = memory->read(r_pc + 1);
-        r_pc += 2;
+        const uint8_t value = fetch();
         (this->*instruction)(value);
     }
     void zeroPage(void (CPU::*instruction)(const uint8_t)) {
-        const uint16_t address = memory->read(r_pc + 1);
-        r_pc += 2;
+        const uint16_t address = fetch();
         (this->*instruction)(address);
     }
     void zeroPageX(void (CPU::*instruction)(const uint8_t)) {
-        const uint16_t address = memory->read(r_pc + 1) + r_x;
-        r_pc += 2;
+        const uint16_t address = fetch() + r_x;
         (this->*instruction)(address);
     }
     void zeroPageY(void (CPU::*instruction)(const uint8_t)) {
-        const uint16_t address = memory->read(r_pc + 1) + r_y;
-        r_pc += 2;
+        const uint16_t address = fetch() + r_y;
         (this->*instruction)(address);
     }
     //void relative(Instruction instruction);
     void absolute(void (CPU::*instruction)(const uint16_t&)) {
-        const uint16_t address = read16(r_pc + 1);
-        r_pc += 3;
+        const uint16_t address = fetch16();
         (this->*instruction)(address);
     }
     //void absoluteX(Instruction instruction);

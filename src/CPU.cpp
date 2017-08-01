@@ -61,7 +61,7 @@ uint16_t CPU::pop16() {
 void CPU::step() {
     // TODO: Handle interrupts
 
-    const uint8_t opcode = memory->read(r_pc);
+    const uint8_t opcode = fetch();
     execute(opcode);
     
     cycles += cycle_table[opcode];
