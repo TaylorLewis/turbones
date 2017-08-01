@@ -97,8 +97,14 @@ private:
         const uint16_t address = fetch16();
         (this->*instruction)(address);
     }
-    //void absoluteX(Instruction instruction);
-    //void absoluteY(Instruction instruction);
+    void absoluteX(void (CPU::*instruction)(const uint16_t&)) {
+        const uint16_t address = fetch16() + r_x;
+        (this->*instruction)(address);
+    }
+    void absoluteY(void (CPU::*instruction)(const uint16_t&)) {
+        const uint16_t address = fetch16() + r_y;
+        (this->*instruction)(address);
+    }
     //void indirect(Instruction instruction);
     //void indexedIndirect(Instruction instruction);
     //void indirectIndexed(Instruction instruction);
