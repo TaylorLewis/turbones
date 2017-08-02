@@ -9,12 +9,11 @@ NES::NES() : memory(&mapper), cpu(&memory) {
 void NES::load(const std::string& rom_path) {
     cart = Cartridge(rom_path);
     mapper.load(&cart);
-
-    std::cout << "NES::load finished." << std::endl; //d
 }
 
 void NES::run() {
-    std::cout << "NES::run() start." << std::endl;
+    cpu.powerOn();
+    //ppu.powerOn();
 
     // TODO
 

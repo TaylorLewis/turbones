@@ -5,7 +5,9 @@
 
 CPU::CPU(Memory* mem) {
     memory = mem;
+}
 
+void CPU::powerOn() {
     r_a = 0;
     r_x = 0;
     r_y = 0;

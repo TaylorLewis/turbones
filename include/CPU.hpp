@@ -12,6 +12,7 @@ class CPU {
 public:
     CPU(Memory* mem);
 
+    void powerOn();
     // Execute next instruction.
     void step();
 
