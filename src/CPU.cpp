@@ -1272,8 +1272,8 @@ void CPU::RTI()
 {
 }
 
-void CPU::RTS()
-{
+void CPU::RTS() {
+    r_pc = pop16() + 1;
 }
 
 void CPU::SBC()
