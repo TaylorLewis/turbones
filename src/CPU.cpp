@@ -938,9 +938,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0xD8:
-        //    implied(&CPU::CLD);
-        //    break;
+        case 0xD8:
+            implied(&CPU::CLD);
+            break;
 
         //case 0xD9:
         //    absoluteY(&CPU::CMP);
@@ -1066,9 +1066,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0xF8:
-        //    implied(&CPU::SED);
-        //    break;
+        case 0xF8:
+            implied(&CPU::SED);
+            break;
 
         //case 0xF9:
         //    absolute(&CPU::SBC);
@@ -1101,6 +1101,7 @@ void CPU::execute(const uint8_t& opcode) {
         default:
             std::cerr << "Unsupported instruction: " << instruction_table[opcode]
                 << ". Opcode: " << std::hex << (int)opcode << std::endl;
+            break;
     }
 }
 
@@ -1158,8 +1159,8 @@ void CPU::BVS()
 {
 }
 
-void CPU::CLC()
-{
+void CPU::CLC() {
+    r_p.reset(DECIMAL_MODE);
 }
 
 void CPU::CLD()
@@ -1287,8 +1288,8 @@ void CPU::SEC()
 {
 }
 
-void CPU::SED()
-{
+void CPU::SED() {
+    r_p.set(DECIMAL_MODE);
 }
 
 void CPU::SEI() {
