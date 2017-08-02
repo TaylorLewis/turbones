@@ -1246,7 +1246,7 @@ void CPU::ORA()
 }
 
 void CPU::PHA() {
-    push(sp);
+    push(r_a);
 }
 
 void CPU::PHP()
