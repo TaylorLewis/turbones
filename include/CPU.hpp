@@ -81,15 +81,15 @@ private:
         (this->*instruction)(value);
     }
     void zeroPage(void (CPU::*instruction)(const uint8_t)) {
-        const uint16_t address = fetch();
+        const uint8_t address = fetch();
         (this->*instruction)(address);
     }
     void zeroPageX(void (CPU::*instruction)(const uint8_t)) {
-        const uint16_t address = fetch() + r_x;
+        const uint8_t address = fetch() + r_x;
         (this->*instruction)(address);
     }
     void zeroPageY(void (CPU::*instruction)(const uint8_t)) {
-        const uint16_t address = fetch() + r_y;
+        const uint8_t address = fetch() + r_y;
         (this->*instruction)(address);
     }
     void relative(void (CPU::*instruction)(const int8_t)) {
