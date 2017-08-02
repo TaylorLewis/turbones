@@ -108,10 +108,21 @@ private:
         const uint16_t address = fetch16() + r_y;
         (this->*instruction)(address);
     }
-    //void indirect(Instruction instruction);
-    //void indexedIndirect(Instruction instruction);
-    //void indirectIndexed(Instruction instruction);
-
+    void indirect(void (CPU::*instruction)(const uint16_t&)) {
+        const uint16_t firstAddress = fetch16();
+        const uint16_t secondAddress = read16(firstAddress);
+        (this->*instruction)(secondAddress);
+    }
+    void indexedIndirect(void (CPU::*instruction)(const uint16_t&)) {
+        const uint16_t firstAddress = fetch() + r_x;
+        const uint16_t secondAddress = read16(firstAddress);
+        (this->*instruction)(secondAddress);
+    }
+    void indirectIndexed(void (CPU::*instruction)(const uint16_t&)) {
+        const uint16_t firstAddress = fetch();
+        const uint16_t secondAddress = read16(firstAddress) + r_y;
+        (this->*instruction)(secondAddress);
+    }
 
 
     // Instructions
