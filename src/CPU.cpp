@@ -16,7 +16,7 @@ void CPU::powerOn() {
 
     r_p = 0b0011'0100;
 
-    r_pc = 0x8000;
+    r_pc = read16(0xFFFC);
 }
 
 uint8_t CPU::fetch() {
