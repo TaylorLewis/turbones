@@ -12,33 +12,32 @@ void CPU::powerOn() {
     r_x = 0;
     r_y = 0;
 
-    r_sp = 0xFD;
+    pc = read16(0xFFFC);
+    sp = 0xFD;
 
     r_p = 0b0011'0100;
-
-    r_pc = read16(0xFFFC);
 }
 
 uint8_t CPU::fetch() {
-    const uint8_t value = memory->read(r_pc);
-    ++r_pc;
+    const uint8_t value = memory->read(pc);
+    ++pc;
     return value;
 }
 
 uint16_t CPU::fetch16() {
-    const uint16_t value = read16(r_pc);
-    r_pc += 2;
+    const uint16_t value = read16(pc);
+    pc += 2;
     return value;
 }
 
 void CPU::push(const uint8_t& value) {
-    memory->write(0x100 + r_sp, value);
-    --r_sp;
+    memory->write(0x100 + sp, value);
+    --sp;
 }
 
 uint8_t CPU::pop() {
-    ++r_sp;
-    return memory->read(0x100 + r_sp);
+    ++sp;
+    return memory->read(0x100 + sp);
 }
 
 uint16_t CPU::read16(const uint16_t& address) {
@@ -1218,8 +1217,8 @@ void CPU::JMP()
 }
 
 void CPU::JSR(const uint16_t& address) {
-    push16(r_pc - 1);
-    r_pc = address;
+    push16(pc - 1);
+    pc = address;
 }
 
 void CPU::LDA()
@@ -1247,7 +1246,7 @@ void CPU::ORA()
 }
 
 void CPU::PHA() {
-    push(r_sp);
+    push(sp);
 }
 
 void CPU::PHP()
@@ -1275,7 +1274,7 @@ void CPU::RTI()
 }
 
 void CPU::RTS() {
-    r_pc = pop16() + 1;
+    pc = pop16() + 1;
 }
 
 void CPU::SBC()

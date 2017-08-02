@@ -12,11 +12,13 @@ class CPU {
 public:
     CPU(Memory* mem);
 
+    // Initialize registers to their power on state.
     void powerOn();
-    // Execute next instruction.
+    // Handle any interrupt and execute next opcode.
     void step();
 
 private:
+    // Execute opcode instruction.
     void execute(const uint8_t& opcode);
 
     // Returns value at address in the program counter (PC), then increments the PC.
@@ -42,83 +44,103 @@ private:
     // Tracks number of emulated cycles.
     int cycles;
 
-    // The following are the registers - denoted with the 'r_' prefix.
     // Accumulator. Used for arithmethical and logical operations.
     uint8_t r_a;
     // Index registers. Used for indexed addressing.
-    uint8_t r_x, // Can directly alter stack pointer, unlike 'r_y'.
+    uint8_t r_x, // Can directly alter stack pointer, unlike register Y.
             r_y;
     // Program Counter. Contains the memory address of the next instruction to be executed.
-    uint16_t r_pc;
-    // Stack Pointer.
-    uint8_t r_sp;
+    uint16_t pc;
+    // Stack Pointer. Points to the next empty location on the stack. Counts downward.
+    uint8_t sp;
     // Status register.
-    // Each bit is a boolean flag. Enumerating the bits:
+    // Each bit is a boolean flag. Enumerating the bits (0 being the least significant):
     // 76543210
     // NV-BDIZC
-    // (with 0 being the least significant bit)
-    // 0: Carry flag.
-    // 1: Zero flag. Set if the result of the last instruction was 0.
-    // 2: Interrupt inhibit. Disables response to maskable Interrupt Requests (IRQs). Doesn't affect Non-Maskable Interrupts (NMIs)
-    // 3: Decimal mode. Would enable BCD (Binary Coded Decimal) mode, but it's disabled on the 2A03.
-    // 4: Break Command.
+    // 0: Carry Flag. 1 if last addition or shift resulted in a carry,
+    //    or if last subtraction resulted in no borrow. Generally used for unsigned arithmetic.
+    // 1: Zero Flag. Set if the result of the last instruction was 0.
+    // 2: Interrupt Disable. Disables response to maskable Interrupt Requests (IRQs).
+    //    Doesn't affect Non-Maskable Interrupts (NMIs)
+    // 3: Decimal Mode. Would enable BCD (Binary Coded Decimal) mode, but it's disabled on the 2A03.
+    // 4: Break Command. Set when a BRK instruction has been executed and an interrupt has been generated to process it.
     // 5: (Unused)
-    // 6: Overflow flag. 
-    // 7: Negative flag. Set if the result of the last operation was negative.
+    // 6: Overflow Flag. . Generally used for signed arithmetic.
+    // 7: Negative Flag. set if the result of the last operation had bit 7 (the leftmost) set to a one,
+    //    denoting negativity in a signed (two's complement) binary number.
     // TODO: Add interface to status flags
     uint8_t r_p;
 
 
 
-    // Addressing Modes
+    // Addressing Modes.
+    // Each opcode denotes not only an instruction, but a particular mode of addressing memory.
+    // Many opcodes have multiple address modes, and so have multiple opcodes.
+
+    // No operands. All the necessary information is in the opcode.
     void implied(void (CPU::*instruction)()) {
         (this->*instruction)();
     }
-    void accumulator(void (CPU::*instruction)()) { // Special type of 'implied'. May be unnecessary.
-        (this->*instruction)();
-    }
+    //// Special type of Implied, operating directing on the accumulator register. May be unnecessary.
+    //void accumulator(void (CPU::*instruction)()) {
+    //    (this->*instruction)();
+    //}
+    // Operand is an 8-bit constant value.
     void immediate(void (CPU::*instruction)(const uint8_t&)) {
         const uint8_t value = fetch();
         (this->*instruction)(value);
     }
+    // Operand is an 8-bit address, addressing only the first 0x100 bytes of memory.
     void zeroPage(void (CPU::*instruction)(const uint8_t&)) {
         const uint8_t address = fetch();
         (this->*instruction)(address);
     }
+    // Like Zero Page, but adds X register to the address.
     void zeroPageX(void (CPU::*instruction)(const uint8_t&)) {
         const uint8_t address = fetch() + r_x;
         (this->*instruction)(address);
     }
+    // Like Zero Page, but adds Y register to the address.
     void zeroPageY(void (CPU::*instruction)(const uint8_t&)) {
         const uint8_t address = fetch() + r_y;
         (this->*instruction)(address);
     }
+    // Corresponds to branch instructions. The (signed) 8-bit operand is an offset,
+    // to be added to the PC if the condition is true, or ignored if false.
     void relative(void (CPU::*instruction)(const int8_t&)) {
         int8_t offset = (int8_t)fetch();
         (this->*instruction)(offset);
     }
+    // Operand is a full 16-bit address.
     void absolute(void (CPU::*instruction)(const uint16_t&)) {
         const uint16_t address = fetch16();
         (this->*instruction)(address);
     }
+    // Like Absolute, but adds X register to the address.
     void absoluteX(void (CPU::*instruction)(const uint16_t&)) {
         const uint16_t address = fetch16() + r_x;
         (this->*instruction)(address);
     }
+    // Like Absolute, but adds Y register to the address.
     void absoluteY(void (CPU::*instruction)(const uint16_t&)) {
         const uint16_t address = fetch16() + r_y;
         (this->*instruction)(address);
     }
+    // Operand is a 16-bit address points to another address.
     void indirect(void (CPU::*instruction)(const uint16_t&)) {
         const uint16_t firstAddress = fetch16();
         const uint16_t secondAddress = read16(firstAddress);
         (this->*instruction)(secondAddress);
     }
+    // Operand is an 8-bit address to which the X register is added,
+    // pointing to another address.
     void indexedIndirect(void (CPU::*instruction)(const uint16_t&)) {
         const uint16_t firstAddress = fetch() + r_x;
         const uint16_t secondAddress = read16(firstAddress);
         (this->*instruction)(secondAddress);
     }
+    // Operand is an 8-bit address pointing to another address,
+    // (the latter) to which the Y register is added.
     void indirectIndexed(void (CPU::*instruction)(const uint16_t&)) {
         const uint16_t firstAddress = fetch();
         const uint16_t secondAddress = read16(firstAddress) + r_y;
