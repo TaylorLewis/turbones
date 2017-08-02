@@ -426,9 +426,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0x58:
-        //    implied(&CPU::CLI);
-        //    break;
+        case 0x58:
+            implied(&CPU::CLI);
+            break;
 
         //case 0x59:
         //    absoluteY(&CPU::EOR);
@@ -554,9 +554,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0x78:
-        //    implied(&CPU::SEI);
-        //    break;
+        case 0x78:
+            implied(&CPU::SEI);
+            break;
 
         //case 0x79:
         //    absoluteY(&CPU::ADC);
@@ -1166,8 +1166,8 @@ void CPU::CLD()
 {
 }
 
-void CPU::CLI()
-{
+void CPU::CLI() {
+    r_p.reset(INTERRUPT_DISABLE);
 }
 
 void CPU::CLV()
@@ -1291,8 +1291,8 @@ void CPU::SED()
 {
 }
 
-void CPU::SEI()
-{
+void CPU::SEI() {
+    r_p.set(INTERRUPT_DISABLE);
 }
 
 void CPU::STA()
