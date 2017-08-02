@@ -2,8 +2,6 @@
 
 #include <stdint.h>
 #include <array>
-#include <memory>
-#include <functional>
 
 #include <Memory.hpp>
 
