@@ -154,7 +154,7 @@ private:
     void INX(); // Increment X Register
     void INY(); // Increment Y Register
     void JMP(); // Jump
-    void JSR(); // Jump to Subroutine
+    void JSR(const uint16_t& address); // Jump to Subroutine
     void LDA(); // Load Accumulator
     void LDX(); // Load X Register
     void LDY(); // Load Y Register

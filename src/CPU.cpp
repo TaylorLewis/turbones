@@ -199,9 +199,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0x20:
-        //    absolute(&CPU::JSR);
-        //    break;
+        case 0x20:
+            absolute(&CPU::JSR);
+            break;
 
         //case 0x21:
         //    indexedIndirect(&CPU::AND);
@@ -1215,8 +1215,9 @@ void CPU::JMP()
 {
 }
 
-void CPU::JSR()
-{
+void CPU::JSR(const uint16_t& address) {
+    push16(r_pc - 1);
+    r_pc = address;
 }
 
 void CPU::LDA()
