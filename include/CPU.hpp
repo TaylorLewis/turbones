@@ -2,6 +2,7 @@
 
 #include <stdint.h>
 #include <array>
+#include <bitset>
 
 #include <Memory.hpp>
 
@@ -16,6 +17,16 @@ public:
     void step();
 
 private:
+    // Positions of status register flags. See status register comments.
+    static constexpr int CARRY_FLAG = 0,
+                         ZERO_FLAG = 1,
+                         INTERRUPT_DISABLE = 2,
+                         DECIMAL_MODE = 3,
+                         BREAK_MODE_FLAG = 4,
+                         UNUSED_BIT = 5,
+                         OVERFLOW_FLAG = 6,
+                         NEGATIVE_FLAG = 7;
+
     // Execute opcode instruction.
     void execute(const uint8_t& opcode);
 
@@ -51,23 +62,22 @@ private:
     uint16_t pc;
     // Stack Pointer. Points to the next empty location on the stack. Counts downward.
     uint8_t sp;
-    // Status register.
-    // Each bit is a boolean flag. Enumerating the bits (0 being the least significant):
-    // 76543210
-    // NV-BDIZC
+    // Status register. Each bit is a boolean flag. 
+    // Enumerating the bits (0 being the least significant):
+    // 7654 3210
+    // NV-B DIZC
     // 0: Carry Flag. 1 if last addition or shift resulted in a carry,
-    //    or if last subtraction resulted in no borrow. Generally used for unsigned arithmetic.
+    //    or if last subtraction resulted in no borrow.
     // 1: Zero Flag. Set if the result of the last instruction was 0.
     // 2: Interrupt Disable. Disables response to maskable Interrupt Requests (IRQs).
     //    Doesn't affect Non-Maskable Interrupts (NMIs)
     // 3: Decimal Mode. Would enable BCD (Binary Coded Decimal) mode, but it's disabled on the 2A03.
     // 4: Break Command. Set when a BRK instruction has been executed and an interrupt has been generated to process it.
-    // 5: (Unused)
-    // 6: Overflow Flag. . Generally used for signed arithmetic.
-    // 7: Negative Flag. set if the result of the last operation had bit 7 (the leftmost) set to a one,
-    //    denoting negativity in a signed (two's complement) binary number.
-    // TODO: Add interface to status flags
-    uint8_t r_p;
+    // 5: Unused. Always set.
+    // 6: Overflow Flag. Set when a signed arithmetic operation results in an invalid (overflowed) value. (e.g. 127+127 = -2).
+    // 7: Negative Flag. Set if the result of the last operation had bit 7 (the leftmost) set to a one,
+    //    denoting negativity in a signed binary number.
+    std::bitset<8> r_p;
 
 
 

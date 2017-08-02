@@ -15,7 +15,9 @@ void CPU::powerOn() {
     pc = read16(0xFFFC);
     sp = 0xFD;
 
-    r_p = 0b0011'0100;
+    r_p.set(INTERRUPT_DISABLE);
+    r_p.set(BREAK_MODE_FLAG);
+    r_p.set(UNUSED_BIT);
 }
 
 uint8_t CPU::fetch() {
