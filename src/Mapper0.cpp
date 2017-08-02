@@ -5,7 +5,7 @@
 void Mapper0::load(Cartridge* cartridge) {
     this->cart = cartridge;
 
-    prg_mirrored = !(cart->prg_rom.size() == Cartridge::PRG_PAGE_SIZE);
+    prg_mirrored = (cart->prg_rom.size() == Cartridge::PRG_PAGE_SIZE);
 }
 
 uint8_t Mapper0::read(const uint16_t& address) {
