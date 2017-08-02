@@ -76,23 +76,23 @@ private:
     void accumulator(void (CPU::*instruction)()) { // Special type of 'implied'. May be unnecessary.
         (this->*instruction)();
     }
-    void immediate(void (CPU::*instruction)(const uint8_t)) {
+    void immediate(void (CPU::*instruction)(const uint8_t&)) {
         const uint8_t value = fetch();
         (this->*instruction)(value);
     }
-    void zeroPage(void (CPU::*instruction)(const uint8_t)) {
+    void zeroPage(void (CPU::*instruction)(const uint8_t&)) {
         const uint8_t address = fetch();
         (this->*instruction)(address);
     }
-    void zeroPageX(void (CPU::*instruction)(const uint8_t)) {
+    void zeroPageX(void (CPU::*instruction)(const uint8_t&)) {
         const uint8_t address = fetch() + r_x;
         (this->*instruction)(address);
     }
-    void zeroPageY(void (CPU::*instruction)(const uint8_t)) {
+    void zeroPageY(void (CPU::*instruction)(const uint8_t&)) {
         const uint8_t address = fetch() + r_y;
         (this->*instruction)(address);
     }
-    void relative(void (CPU::*instruction)(const int8_t)) {
+    void relative(void (CPU::*instruction)(const int8_t&)) {
         int8_t offset = (int8_t)fetch();
         (this->*instruction)(offset);
     }
