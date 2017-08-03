@@ -388,9 +388,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0x4C:
-        //    absolute(&CPU::JMP);
-        //    break;
+        case 0x4C:
+            absolute(&CPU::JMP);
+            break;
 
         case 0x4D:
             absolute(&CPU::EOR);
@@ -516,9 +516,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0x6C:
-        //    indirect(&CPU::JMP);
-        //    break;
+        case 0x6C:
+            indirect(&CPU::JMP);
+            break;
 
         //case 0x6D:
         //    absolute(&CPU::ADC);
@@ -1251,8 +1251,8 @@ void CPU::INY() {
     setNegativeFlag(r_y);
 }
 
-void CPU::JMP()
-{
+void CPU::JMP(const uint16_t& address) {
+    pc = address;
 }
 
 void CPU::JSR(const uint16_t& address) {

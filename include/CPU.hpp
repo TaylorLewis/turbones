@@ -192,7 +192,7 @@ private:
     void INC(const uint16_t& address); // Increment Memory
     void INX(); // Increment X Register
     void INY(); // Increment Y Register
-    void JMP(); // Jump
+    void JMP(const uint16_t& address); // Jump
     void JSR(const uint16_t& address); // Jump to Subroutine
     void LDA(const uint16_t& address); // Load Accumulator
     void LDX(const uint16_t& address); // Load X Register
