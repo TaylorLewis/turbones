@@ -180,9 +180,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0x18:
-        //    CLC();
-        //    break;
+        case 0x18:
+            CLC();
+            break;
 
         case 0x19:
             absoluteY(&CPU::ORA);
@@ -308,9 +308,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0x38:
-        //    SEC();
-        //    break;
+        case 0x38:
+            SEC();
+            break;
 
         case 0x39:
             absoluteY(&CPU::AND);
@@ -820,9 +820,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0xB8:
-        //    CLV();
-        //    break;
+        case 0xB8:
+            CLV();
+            break;
 
         case 0xB9:
             absoluteY(&CPU::LDA);
@@ -1192,19 +1192,19 @@ void CPU::BVS(const uint16_t& address) {
 }
 
 void CPU::CLC() {
-    r_p.reset(DECIMAL_MODE);
+    r_p.reset(CARRY_FLAG);
 }
 
-void CPU::CLD()
-{
+void CPU::CLD() {
+    r_p.reset(DECIMAL_MODE);
 }
 
 void CPU::CLI() {
     r_p.reset(INTERRUPT_DISABLE);
 }
 
-void CPU::CLV()
-{
+void CPU::CLV() {
+    r_p.reset(OVERFLOW_FLAG);
 }
 
 void CPU::CMP(const uint16_t& address) {
@@ -1355,8 +1355,8 @@ void CPU::SBC()
 {
 }
 
-void CPU::SEC()
-{
+void CPU::SEC() {
+    r_p.set(CARRY_FLAG);
 }
 
 void CPU::SED() {
