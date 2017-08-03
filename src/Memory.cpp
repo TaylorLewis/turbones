@@ -16,7 +16,7 @@ uint8_t Memory::read(const uint16_t& address) {
     } else if (address >= 0x6000) {
         return mapper->read(address);
     } else {
-        std::cerr << "Unhandled memory read at: " << std::hex << address << std::endl;
+        std::cerr << "Unhandled memory read at: " << std::hex << (int)address << std::endl;
     }
 }
 
@@ -30,8 +30,8 @@ void Memory::write(const uint16_t& address, const uint8_t& value) {
     } else if (address >= 0x6000) {
         return mapper->write(address, value);
     } else {
-        std::cerr << "Unhandled memory write at: " << std::hex << address
-            << "\nwith value: " << value << std::endl;
+        std::cerr << "Unhandled memory write at: " << std::hex << (int)address
+            << "\nwith value: " << (int)value << std::endl;
     }
 }
 
