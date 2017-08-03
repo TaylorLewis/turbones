@@ -636,9 +636,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // NOP
         //    break;
 
-        //case 0x8A:
-        //    TXA();
-        //    break;
+        case 0x8A:
+            TXA();
+            break;
 
         //case 0x8B:
         //    // illegal opcode
@@ -692,9 +692,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0x98:
-        //    TYA();
-        //    break;
+        case 0x98:
+            TYA();
+            break;
 
         case 0x99:
             absoluteY(&CPU::STA);
@@ -756,17 +756,17 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0xA8:
-        //    TAY();
-        //    break;
+        case 0xA8:
+            TAY();
+            break;
 
         case 0xA9:
             immediate(&CPU::LDA);
             break;
 
-        //case 0xAA:
-        //    TAX();
-        //    break;
+        case 0xAA:
+            TAX();
+            break;
 
         //case 0xAB:
         //    // illegal opcode
@@ -1371,12 +1371,16 @@ void CPU::STY(const uint16_t& address) {
     memory->write(address, r_y);
 }
 
-void CPU::TAX()
-{
+void CPU::TAX() {
+    r_x = r_a;
+    setZeroFlag(r_x);
+    setNegativeFlag(r_x);
 }
 
-void CPU::TAY()
-{
+void CPU::TAY() {
+    r_y = r_a;
+    setZeroFlag(r_y);
+    setNegativeFlag(r_y);
 }
 
 void CPU::TSX() {
@@ -1387,13 +1391,17 @@ void CPU::TSX() {
 }
 
 void CPU::TXA() {
+    r_a = r_x;
+    setZeroFlag(r_a);
+    setNegativeFlag(r_a);
+}
+
+void CPU::TXS() {
     sp = r_x;
 }
 
-void CPU::TXS()
-{
-}
-
-void CPU::TYA()
-{
+void CPU::TYA() {
+    r_a = r_x;
+    setZeroFlag(r_a);
+    setNegativeFlag(r_a);
 }
