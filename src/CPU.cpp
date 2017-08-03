@@ -1220,10 +1220,10 @@ void CPU::CPY(const uint16_t& address) {
 }
 
 void CPU::DEC(const uint16_t& address) {
-    const uint8_t value = memory->read(address) - 1;
-    memory->write(address, value);
-    setZeroFlag(value);
-    setNegativeFlag(value);
+    const uint8_t result = memory->read(address) - 1;
+    memory->write(address, result);
+    setZeroFlag(result);
+    setNegativeFlag(result);
 }
 
 void CPU::DEX() {
@@ -1245,10 +1245,10 @@ void CPU::EOR(const uint16_t& address) {
 }
 
 void CPU::INC(const uint16_t& address) {
-    const uint8_t value = memory->read(address) + 1;
-    memory->write(address, value);
-    setZeroFlag(value);
-    setNegativeFlag(value);
+    const uint8_t result = memory->read(address) + 1;
+    memory->write(address, result);
+    setZeroFlag(result);
+    setNegativeFlag(result);
 }
 
 void CPU::INX() {
