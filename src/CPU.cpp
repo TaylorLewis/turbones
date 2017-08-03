@@ -75,7 +75,7 @@ void CPU::execute(const uint8_t& opcode) {
     switch (opcode) {
 
         //case 0x00:
-        //    implied(&BRK);
+        //    BRK();
         //    break;
 
         //case 0x01:
@@ -107,7 +107,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x08:
-        //    implied(&CPU::PHP);
+        //    PHP();
         //    break;
 
         //case 0x09:
@@ -115,7 +115,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x0A:
-        //    implied(&CPU::ASL);
+        //    ASL();
         //    break;
 
         //case 0x0B:
@@ -171,7 +171,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x18:
-        //    implied(&CPU::CLC);
+        //    CLC();
         //    break;
 
         //case 0x19:
@@ -235,7 +235,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x28:
-        //    implied(&CPU::PLP);
+        //    PLP();
         //    break;
 
         //case 0x29:
@@ -243,7 +243,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x2A:
-        //    implied(&CPU::ROL);
+        //    ROL();
         //    break;
 
         //case 0x2B:
@@ -299,7 +299,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x38:
-        //    implied(&CPU::SEC);
+        //    SEC();
         //    break;
 
         //case 0x39:
@@ -331,7 +331,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x40:
-        //    implied(&CPU::RTI);
+        //    RTI();
         //    break;
 
         //case 0x41:
@@ -363,7 +363,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x48:
-            implied(&CPU::PHA);
+            PHA();
             break;
 
         //case 0x49:
@@ -371,7 +371,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x4A:
-        //    implied(&CPU::LSR);
+        //    LSR();
         //    break;
 
         //case 0x4B:
@@ -427,7 +427,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x58:
-            implied(&CPU::CLI);
+            CLI();
             break;
 
         //case 0x59:
@@ -459,7 +459,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x60:
-        //    implied(&CPU::RTS);
+        //    RTS();
         //    break;
 
         //case 0x61:
@@ -491,7 +491,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x68:
-        //    implied(&CPU::PLA);
+        //    PLA();
         //    break;
 
         //case 0x69:
@@ -499,7 +499,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x6A:
-        //    implied(&CPU::ROR);
+        //    ROR();
         //    break;
 
         //case 0x6B:
@@ -555,7 +555,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x78:
-            implied(&CPU::SEI);
+            SEI();
             break;
 
         //case 0x79:
@@ -619,7 +619,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x88:
-        //    implied(&CPU::DEY);
+        //    DEY();
         //    break;
 
         //case 0x89:
@@ -627,7 +627,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x8A:
-        //    implied(&CPU::TXA);
+        //    TXA();
         //    break;
 
         //case 0x8B:
@@ -683,7 +683,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x98:
-        //    implied(&CPU::TYA);
+        //    TYA();
         //    break;
 
         //case 0x99:
@@ -691,7 +691,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x9A:
-        //    implied(&CPU::TXS);
+        //    TXS();
         //    break;
 
         //case 0x9B:
@@ -747,7 +747,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0xA8:
-        //    implied(&CPU::TAY);
+        //    TAY();
         //    break;
 
         //case 0xA9:
@@ -755,7 +755,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0xAA:
-        //    implied(&CPU::TAX);
+        //    TAX();
         //    break;
 
         //case 0xAB:
@@ -811,7 +811,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0xB8:
-        //    implied(&CPU::CLV);
+        //    CLV();
         //    break;
 
         //case 0xB9:
@@ -819,7 +819,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0xBA:
-        //    implied(&CPU::TSX);
+        //    TSX();
         //    break;
 
         //case 0xBB:
@@ -875,7 +875,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0xC8:
-        //    implied(&CPU::INY);
+        //    INY();
         //    break;
 
         //case 0xC9:
@@ -883,7 +883,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0xCA:
-        //    implied(&CPU::DEX);
+        //    DEX();
         //    break;
 
         //case 0xCB:
@@ -939,7 +939,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0xD8:
-            implied(&CPU::CLD);
+            CLD();
             break;
 
         //case 0xD9:
@@ -1003,7 +1003,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0xE8:
-        //    implied(&CPU::INX);
+        //    INX();
         //    break;
 
         //case 0xE9:
@@ -1067,7 +1067,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0xF8:
-            implied(&CPU::SED);
+            SED();
             break;
 
         //case 0xF9:

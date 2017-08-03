@@ -81,18 +81,9 @@ private:
 
 
 
-    // Addressing Modes.
-    // Each opcode denotes not only an instruction, but a particular mode of addressing memory.
-    // Many opcodes have multiple address modes, and so have multiple opcodes.
+    // Addressing Modes. Gives an address to an instruction.
+    // Many instructions have multiple opcodes, for each addressing mode they use.
 
-    // No operands. All the necessary information is in the opcode.
-    void implied(void (CPU::*instruction)()) {
-        (this->*instruction)();
-    }
-    //// Special type of Implied, operating directing on the accumulator register. May be unnecessary.
-    //void accumulator(void (CPU::*instruction)()) {
-    //    (this->*instruction)();
-    //}
     // Operand is an 8-bit constant value.
     void immediate(void (CPU::*instruction)(const uint16_t&)) {
         const uint16_t address = pc;
@@ -155,6 +146,16 @@ private:
         const uint16_t secondAddress = read16(firstAddress) + r_y;
         (this->*instruction)(secondAddress);
     }
+
+    //// No operands. All the necessary information is in the opcode.
+    //void implied(void (CPU::*instruction)()) {
+    //    (this->*instruction)();
+    //}
+    //// Special type of Implied, operating directing on the accumulator register. May be unnecessary.
+    //void accumulator(void (CPU::*instruction)()) {
+    //    (this->*instruction)();
+    //}
+
 
 
     // Instructions
