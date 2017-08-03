@@ -94,18 +94,18 @@ private:
         (this->*instruction)(address);
     }
     // Operand is an 8-bit address, addressing only the first 0x100 bytes of memory.
-    void zeroPage(void (CPU::*instruction)(const uint8_t&)) {
-        const uint8_t address = fetch();
+    void zeroPage(void (CPU::*instruction)(const uint16_t&)) {
+        const uint16_t address = fetch();
         (this->*instruction)(address);
     }
     // Like Zero Page, but adds X register to the address.
-    void zeroPageX(void (CPU::*instruction)(const uint8_t&)) {
-        const uint8_t address = fetch() + r_x;
+    void zeroPageX(void (CPU::*instruction)(const uint16_t&)) {
+        const uint16_t address = fetch() + r_x;
         (this->*instruction)(address);
     }
     // Like Zero Page, but adds Y register to the address.
-    void zeroPageY(void (CPU::*instruction)(const uint8_t&)) {
-        const uint8_t address = fetch() + r_y;
+    void zeroPageY(void (CPU::*instruction)(const uint16_t&)) {
+        const uint16_t address = fetch() + r_y;
         (this->*instruction)(address);
     }
     // Corresponds to branch instructions. The (signed) 8-bit operand is an offset,
