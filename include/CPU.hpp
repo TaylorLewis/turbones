@@ -182,7 +182,7 @@ private:
     void CMP(); // Compare
     void CPX(); // Compare X Register
     void CPY(); // Compare Y Register
-    void DEC(); // Decrement Memory
+    void DEC(const uint16_t& address); // Decrement Memory
     void DEX(); // Decrement X Register
     void DEY(); // Decrement Y Register
     void EOR(const uint16_t& address); // Exclusive OR

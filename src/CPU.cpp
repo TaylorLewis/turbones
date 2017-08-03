@@ -628,9 +628,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0x88:
-        //    DEY();
-        //    break;
+        case 0x88:
+            DEY();
+            break;
 
         //case 0x89:
         //    // NOP
@@ -876,9 +876,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    zeroPage(&CPU::CMP);
         //    break;
 
-        //case 0xC6:
-        //    zeroPage(&CPU::DEC);
-        //    break;
+        case 0xC6:
+            zeroPage(&CPU::DEC);
+            break;
 
         //case 0xC7:
         //    // illegal opcode
@@ -892,9 +892,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    immediate(&CPU::CMP);
         //    break;
 
-        //case 0xCA:
-        //    DEX();
-        //    break;
+        case 0xCA:
+            DEX();
+            break;
 
         //case 0xCB:
         //    // illegal opcode
@@ -908,9 +908,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    absolute(&CPU::CMP);
         //    break;
 
-        //case 0xCE:
-        //    absolute(&CPU::DEC);
-        //    break;
+        case 0xCE:
+            absolute(&CPU::DEC);
+            break;
 
         //case 0xCF:
         //    // illegal opcode
@@ -940,9 +940,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    zeroPageX(&CPU::CMP);
         //    break;
 
-        //case 0xD6:
-        //    zeroPageX(&CPU::DEC);
-        //    break;
+        case 0xD6:
+            zeroPageX(&CPU::DEC);
+            break;
 
         //case 0xD7:
         //    // illegal opcode
@@ -972,9 +972,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    absoluteX(&CPU::CMP);
         //    break;
 
-        //case 0xDE:
-        //    absoluteX(&CPU::DEC);
-        //    break;
+        case 0xDE:
+            absoluteX(&CPU::DEC);
+            break;
 
         //case 0xDF:
         //    // illegal opcode
@@ -1202,16 +1202,23 @@ void CPU::CPY()
 {
 }
 
-void CPU::DEC()
-{
+void CPU::DEC(const uint16_t& address) {
+    const uint8_t value = memory->read(address) - 1;
+    memory->write(address, value);
+    setZeroFlag(value);
+    setNegativeFlag(value);
 }
 
-void CPU::DEX()
-{
+void CPU::DEX() {
+    --r_x;
+    setZeroFlag(r_x);
+    setNegativeFlag(r_x);
 }
 
-void CPU::DEY()
-{
+void CPU::DEY() {
+    --r_y;
+    setZeroFlag(r_y);
+    setNegativeFlag(r_y);
 }
 
 void CPU::EOR(const uint16_t& address) {
