@@ -182,9 +182,9 @@ private:
     void CLD(); // Clear Decimal Mode
     void CLI(); // Clear Interrupt Disable
     void CLV(); // Clear Overflow Flag
-    void CMP(); // Compare
-    void CPX(); // Compare X Register
-    void CPY(); // Compare Y Register
+    void CMP(const uint16_t& address); // Compare
+    void CPX(const uint16_t& address); // Compare X Register
+    void CPY(const uint16_t& address); // Compare Y Register
     void DEC(const uint16_t& address); // Decrement Memory
     void DEX(); // Decrement X Register
     void DEY(); // Decrement Y Register

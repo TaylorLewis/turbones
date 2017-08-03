@@ -852,13 +852,13 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0xC0:
-        //    immediate(&CPU::CPY);
-        //    break;
+        case 0xC0:
+            immediate(&CPU::CPY);
+            break;
 
-        //case 0xC1:
-        //    indexedIndirect(&CPU::CMP);
-        //    break;
+        case 0xC1:
+            indexedIndirect(&CPU::CMP);
+            break;
 
         //case 0xC2:
         //    // NOP
@@ -868,13 +868,13 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0xC4:
-        //    zeroPage(&CPU::CPY);
-        //    break;
+        case 0xC4:
+            zeroPage(&CPU::CPY);
+            break;
 
-        //case 0xC5:
-        //    zeroPage(&CPU::CMP);
-        //    break;
+        case 0xC5:
+            zeroPage(&CPU::CMP);
+            break;
 
         case 0xC6:
             zeroPage(&CPU::DEC);
@@ -888,9 +888,9 @@ void CPU::execute(const uint8_t& opcode) {
             INY();
             break;
 
-        //case 0xC9:
-        //    immediate(&CPU::CMP);
-        //    break;
+        case 0xC9:
+            immediate(&CPU::CMP);
+            break;
 
         case 0xCA:
             DEX();
@@ -900,13 +900,13 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0xCC:
-        //    absolute(&CPU::CPY);
-        //    break;
+        case 0xCC:
+            absolute(&CPU::CPY);
+            break;
 
-        //case 0xCD:
-        //    absolute(&CPU::CMP);
-        //    break;
+        case 0xCD:
+            absolute(&CPU::CMP);
+            break;
 
         case 0xCE:
             absolute(&CPU::DEC);
@@ -920,9 +920,9 @@ void CPU::execute(const uint8_t& opcode) {
             relative(&CPU::BNE);
             break;
 
-        //case 0xD1:
-        //    indirectIndexed(&CPU::CMP);
-        //    break;
+        case 0xD1:
+            indirectIndexed(&CPU::CMP);
+            break;
 
         //case 0xD2:
         //    // STP
@@ -936,9 +936,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // NOP
         //    break;
 
-        //case 0xD5:
-        //    zeroPageX(&CPU::CMP);
-        //    break;
+        case 0xD5:
+            zeroPageX(&CPU::CMP);
+            break;
 
         case 0xD6:
             zeroPageX(&CPU::DEC);
@@ -952,9 +952,9 @@ void CPU::execute(const uint8_t& opcode) {
             CLD();
             break;
 
-        //case 0xD9:
-        //    absoluteY(&CPU::CMP);
-        //    break;
+        case 0xD9:
+            absoluteY(&CPU::CMP);
+            break;
 
         //case 0xDA:
         //    // NOP
@@ -968,9 +968,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // NOP
         //    break;
 
-        //case 0xDD:
-        //    absoluteX(&CPU::CMP);
-        //    break;
+        case 0xDD:
+            absoluteX(&CPU::CMP);
+            break;
 
         case 0xDE:
             absoluteX(&CPU::DEC);
@@ -980,9 +980,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0xE0:
-        //    immediate(&CPU::CPX);
-        //    break;
+        case 0xE0:
+            immediate(&CPU::CPX);
+            break;
 
         //case 0xE1:
         //    indexedIndirect(&CPU::SBC);
@@ -996,9 +996,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0xE4:
-        //    zeroPage(&CPU::CPX);
-        //    break;
+        case 0xE4:
+            zeroPage(&CPU::CPX);
+            break;
 
         //case 0xE5:
         //    zeroPage(&CPU::SBC);
@@ -1028,9 +1028,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0xEC:
-        //    absolute(&CPU::CPX);
-        //    break;
+        case 0xEC:
+            absolute(&CPU::CPX);
+            break;
 
         //case 0xED:
         //    absolute(&CPU::SBC);
@@ -1195,16 +1195,28 @@ void CPU::CLV()
 {
 }
 
-void CPU::CMP()
-{
+void CPU::CMP(const uint16_t& address) {
+    const uint8_t value = memory->read(address);
+    const uint8_t result = r_a - value;
+    r_p.set(CARRY_FLAG, (result >= 0));
+    setZeroFlag(result);
+    setNegativeFlag(result);
 }
 
-void CPU::CPX()
-{
+void CPU::CPX(const uint16_t& address) {
+    const uint8_t value = memory->read(address);
+    const uint8_t result = r_x - value;
+    r_p.set(CARRY_FLAG, (result >= 0));
+    setZeroFlag(result);
+    setNegativeFlag(result);
 }
 
-void CPU::CPY()
-{
+void CPU::CPY(const uint16_t& address) {
+    const uint8_t value = memory->read(address);
+    const uint8_t result = r_y - value;
+    r_p.set(CARRY_FLAG, (result >= 0));
+    setZeroFlag(result);
+    setNegativeFlag(result);
 }
 
 void CPU::DEC(const uint16_t& address) {
