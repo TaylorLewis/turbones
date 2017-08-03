@@ -97,11 +97,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x03:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0x04:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         case 0x05:
@@ -113,7 +113,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x07:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0x08:
@@ -129,11 +129,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x0B:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0x0C:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         case 0x0D:
@@ -145,7 +145,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x0F:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0x10:
@@ -161,11 +161,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x13:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0x14:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         case 0x15:
@@ -177,7 +177,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x17:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0x18:
@@ -189,15 +189,15 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0x1A:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         //case 0x1B:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0x1C:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         case 0x1D:
@@ -209,7 +209,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x1F:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0x20:
@@ -225,7 +225,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x23:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0x24:
@@ -241,7 +241,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x27:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0x28:
@@ -257,7 +257,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x2B:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0x2C:
@@ -273,7 +273,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x2F:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0x30:
@@ -289,11 +289,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x33:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0x34:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         case 0x35:
@@ -305,7 +305,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x37:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0x38:
@@ -317,15 +317,15 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0x3A:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         //case 0x3B:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0x3C:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         case 0x3D:
@@ -337,7 +337,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x3F:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0x40:
@@ -353,11 +353,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x43:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0x44:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         case 0x45:
@@ -369,7 +369,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x47:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0x48:
@@ -385,7 +385,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x4B:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0x4C:
@@ -401,7 +401,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x4F:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0x50:
@@ -417,11 +417,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x53:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0x54:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         case 0x55:
@@ -433,7 +433,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x57:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0x58:
@@ -445,15 +445,15 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0x5A:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         //case 0x5B:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0x5C:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         case 0x5D:
@@ -465,7 +465,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x5F:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0x60:
@@ -481,11 +481,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x63:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0x64:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         //case 0x65:
@@ -497,7 +497,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x67:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0x68:
@@ -513,7 +513,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x6B:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0x6C:
@@ -529,7 +529,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x6F:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0x70:
@@ -545,11 +545,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x73:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0x74:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         //case 0x75:
@@ -561,7 +561,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x77:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0x78:
@@ -573,15 +573,15 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x7A:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         //case 0x7B:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0x7C:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         //case 0x7D:
@@ -593,11 +593,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x7F:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0x80:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         case 0x81:
@@ -605,11 +605,11 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0x82:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         //case 0x83:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0x84:
@@ -625,7 +625,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0x87:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0x88:
@@ -633,7 +633,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0x89:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         case 0x8A:
@@ -641,7 +641,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0x8B:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0x8C:
@@ -657,7 +657,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0x8F:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0x90:
@@ -673,7 +673,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x93:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0x94:
@@ -689,7 +689,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0x97:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0x98:
@@ -705,7 +705,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0x9B:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0x9C:
@@ -721,7 +721,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x9F:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0xA0:
@@ -737,7 +737,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0xA3:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0xA4:
@@ -753,7 +753,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0xA7:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0xA8:
@@ -769,7 +769,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0xAB:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0xAC:
@@ -785,7 +785,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0xAF:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0xB0:
@@ -801,7 +801,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0xB3:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0xB4:
@@ -817,7 +817,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0xB7:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0xB8:
@@ -833,7 +833,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0xBB:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0xBC:
@@ -849,7 +849,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0xBF:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0xC0:
@@ -861,11 +861,11 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0xC2:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         //case 0xC3:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0xC4:
@@ -881,7 +881,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0xC7:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0xC8:
@@ -897,7 +897,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0xCB:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0xCC:
@@ -913,7 +913,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0xCF:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0xD0:
@@ -929,11 +929,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0xD3:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0xD4:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         case 0xD5:
@@ -945,7 +945,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0xD7:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0xD8:
@@ -957,15 +957,15 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0xDA:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         //case 0xDB:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0xDC:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         case 0xDD:
@@ -977,7 +977,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0xDF:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0xE0:
@@ -989,11 +989,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0xE2:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         //case 0xE3:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0xE4:
@@ -1009,7 +1009,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0xE7:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0xE8:
@@ -1020,12 +1020,12 @@ void CPU::execute(const uint8_t& opcode) {
         //    immediate(&CPU::SBC);
         //    break;
 
-        //case 0xEA:
-        //    // NOP
-        //    break;
+        case 0xEA:
+            NOP();
+            break;
 
         //case 0xEB:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0xEC:
@@ -1041,7 +1041,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0xEF:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0xF0:
@@ -1057,11 +1057,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0xF3:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0xF4:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         //case 0xF5:
@@ -1073,7 +1073,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0xF7:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         case 0xF8:
@@ -1085,15 +1085,15 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0xFA:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         //case 0xFB:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         //case 0xFC:
-        //    // NOP
+        //    // unofficial opcode: NOP
         //    break;
 
         //case 0xFD:
@@ -1105,7 +1105,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0xFF:
-        //    // illegal opcode
+        //    // unofficial opcode
         //    break;
 
         default:
@@ -1309,8 +1309,8 @@ void CPU::LSR()
 {
 }
 
-void CPU::NOP()
-{
+void CPU::NOP() {
+    // Do nothing.
 }
 
 void CPU::ORA(const uint16_t& address) {
