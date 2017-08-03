@@ -176,8 +176,8 @@ private:
     void BNE(const uint16_t& address); // Branch if Not Equal
     void BPL(const uint16_t& address); // Branch if Positive
     void BRK(); // Force Interrupt
-    void BVC(); // Branch if Overflow Clear
-    void BVS(); // Branch if Overflow Set
+    void BVC(const uint16_t& address); // Branch if Overflow Clear
+    void BVS(const uint16_t& address); // Branch if Overflow Set
     void CLC(); // Clear Carry Flag
     void CLD(); // Clear Decimal Mode
     void CLI(); // Clear Interrupt Disable

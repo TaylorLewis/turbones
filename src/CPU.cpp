@@ -404,9 +404,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0x50:
-        //    relative(&CPU::BVC);
-        //    break;
+        case 0x50:
+            relative(&CPU::BVC);
+            break;
 
         case 0x51:
             indirectIndexed(&CPU::EOR);
@@ -532,9 +532,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0x70:
-        //    relative(&CPU::BVS);
-        //    break;
+        case 0x70:
+            relative(&CPU::BVS);
+            break;
 
         //case 0x71:
         //    indirectIndexed(&CPU::ADC);
@@ -1179,12 +1179,16 @@ void CPU::BRK()
 {
 }
 
-void CPU::BVC()
-{
+void CPU::BVC(const uint16_t& address) {
+    const int8_t offset = memory->read(address);
+    if (!r_p.test(OVERFLOW_FLAG)) {
+        pc = (int)pc + offset; }
 }
 
-void CPU::BVS()
-{
+void CPU::BVS(const uint16_t& address) {
+    const int8_t offset = memory->read(address);
+    if (r_p.test(OVERFLOW_FLAG)) {
+        pc = (int)pc + offset; }
 }
 
 void CPU::CLC() {
