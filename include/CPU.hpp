@@ -186,7 +186,7 @@ private:
     void DEX(); // Decrement X Register
     void DEY(); // Decrement Y Register
     void EOR(const uint16_t& address); // Exclusive OR
-    void INC(); // Increment Memory
+    void INC(const uint16_t& address); // Increment Memory
     void INX(); // Increment X Register
     void INY(); // Increment Y Register
     void JMP(); // Jump

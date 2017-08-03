@@ -884,9 +884,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0xC8:
-        //    INY();
-        //    break;
+        case 0xC8:
+            INY();
+            break;
 
         //case 0xC9:
         //    immediate(&CPU::CMP);
@@ -1004,17 +1004,17 @@ void CPU::execute(const uint8_t& opcode) {
         //    zeroPage(&CPU::SBC);
         //    break;
 
-        //case 0xE6:
-        //    zeroPage(&CPU::INC);
-        //    break;
+        case 0xE6:
+            zeroPage(&CPU::INC);
+            break;
 
         //case 0xE7:
         //    // illegal opcode
         //    break;
 
-        //case 0xE8:
-        //    INX();
-        //    break;
+        case 0xE8:
+            INX();
+            break;
 
         //case 0xE9:
         //    immediate(&CPU::SBC);
@@ -1036,9 +1036,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    absolute(&CPU::SBC);
         //    break;
 
-        //case 0xEE:
-        //    absolute(&CPU::INC);
-        //    break;
+        case 0xEE:
+            absolute(&CPU::INC);
+            break;
 
         //case 0xEF:
         //    // illegal opcode
@@ -1068,9 +1068,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    zeroPageX(&CPU::SBC);
         //    break;
 
-        //case 0xF6:
-        //    zeroPageX(&CPU::INC);
-        //    break;
+        case 0xF6:
+            zeroPageX(&CPU::INC);
+            break;
 
         //case 0xF7:
         //    // illegal opcode
@@ -1100,9 +1100,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    absoluteX(&CPU::SBC);
         //    break;
 
-        //case 0xFE:
-        //    absoluteX(&CPU::INC);
-        //    break;
+        case 0xFE:
+            absoluteX(&CPU::INC);
+            break;
 
         //case 0xFF:
         //    // illegal opcode
@@ -1227,16 +1227,23 @@ void CPU::EOR(const uint16_t& address) {
     setNegativeFlag(r_a);
 }
 
-void CPU::INC()
-{
+void CPU::INC(const uint16_t& address) {
+    const uint8_t value = memory->read(address) + 1;
+    memory->write(address, value);
+    setZeroFlag(value);
+    setNegativeFlag(value);
 }
 
-void CPU::INX()
-{
+void CPU::INX() {
+    ++r_x;
+    setZeroFlag(r_x);
+    setNegativeFlag(r_x);
 }
 
-void CPU::INY()
-{
+void CPU::INY() {
+    ++r_y;
+    setZeroFlag(r_y);
+    setNegativeFlag(r_y);
 }
 
 void CPU::JMP()
