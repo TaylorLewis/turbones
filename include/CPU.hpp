@@ -172,9 +172,9 @@ private:
     void BCS(); // Branch if Carry Set
     void BEQ(const uint16_t& address); // Branch if Equal
     void BIT(); // Bit Test
-    void BMI(); // Branch if Minus
+    void BMI(const uint16_t& address); // Branch if Minus
     void BNE(const uint16_t& address); // Branch if Not Equal
-    void BPL(); // Branch if Positive
+    void BPL(const uint16_t& address); // Branch if Positive
     void BRK(); // Force Interrupt
     void BVC(); // Branch if Overflow Clear
     void BVS(); // Branch if Overflow Set

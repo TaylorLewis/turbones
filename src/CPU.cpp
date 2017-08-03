@@ -148,9 +148,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0x10:
-        //    relative(&CPU::BPL);
-        //    break;
+        case 0x10:
+            relative(&CPU::BPL);
+            break;
 
         case 0x11:
             indirectIndexed(&CPU::ORA);
@@ -276,9 +276,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0x30:
-        //    relative(&CPU::BMI);
-        //    break;
+        case 0x30:
+            relative(&CPU::BMI);
+            break;
 
         case 0x31:
             indirectIndexed(&CPU::AND);
@@ -1149,8 +1149,10 @@ void CPU::BIT()
 {
 }
 
-void CPU::BMI()
-{
+void CPU::BMI(const uint16_t& address) {
+    const int8_t offset = memory->read(address);
+    if (r_p.test(NEGATIVE_FLAG)) {
+        pc = (int)pc + offset; }
 }
 
 void CPU::BNE(const uint16_t& address) {
@@ -1159,8 +1161,10 @@ void CPU::BNE(const uint16_t& address) {
         pc = (int)pc + offset; }
 }
 
-void CPU::BPL()
-{
+void CPU::BPL(const uint16_t& address) {
+    const int8_t offset = memory->read(address);
+    if (!r_p.test(NEGATIVE_FLAG)) {
+        pc = (int)pc + offset; }
 }
 
 void CPU::BRK()
