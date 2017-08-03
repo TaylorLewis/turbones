@@ -660,9 +660,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0x90:
-        //    relative(&CPU::BCC);
-        //    break;
+        case 0x90:
+            relative(&CPU::BCC);
+            break;
 
         case 0x91:
             indirectIndexed(&CPU::STA);
@@ -788,9 +788,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0xB0:
-        //    relative(&CPU::BCS);
-        //    break;
+        case 0xB0:
+            relative(&CPU::BCS);
+            break;
 
         case 0xB1:
             indirectIndexed(&CPU::LDA);
@@ -1131,12 +1131,16 @@ void CPU::ASL()
 {
 }
 
-void CPU::BCC()
-{
+void CPU::BCC(const uint16_t& address) {
+    const int8_t offset = memory->read(address);
+    if (!r_p.test(CARRY_FLAG)) {
+        pc = (int)pc + offset; }
 }
 
-void CPU::BCS()
-{
+void CPU::BCS(const uint16_t& address) {
+    const int8_t offset = memory->read(address);
+    if (r_p.test(CARRY_FLAG)) {
+        pc = (int)pc + offset; }
 }
 
 void CPU::BEQ(const uint16_t& address) {

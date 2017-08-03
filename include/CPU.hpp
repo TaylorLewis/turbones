@@ -168,8 +168,8 @@ private:
     void ADC(); // Add with Carry
     void AND(const uint16_t& address); // Logical AND
     void ASL(); // Arithmetic Shift Left
-    void BCC(); // Branch if Carry Clear
-    void BCS(); // Branch if Carry Set
+    void BCC(const uint16_t& address); // Branch if Carry Clear
+    void BCS(const uint16_t& address); // Branch if Carry Set
     void BEQ(const uint16_t& address); // Branch if Equal
     void BIT(const uint16_t& address); // Bit Test
     void BMI(const uint16_t& address); // Branch if Minus
