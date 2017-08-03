@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Mapper.hpp"
+#include "Cartridge.hpp"
 
 // NROM.
 class Mapper0 {
