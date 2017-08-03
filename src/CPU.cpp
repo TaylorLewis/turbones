@@ -700,9 +700,9 @@ void CPU::execute(const uint8_t& opcode) {
             absoluteY(&CPU::STA);
             break;
 
-        //case 0x9A:
-        //    TXS();
-        //    break;
+        case 0x9A:
+            TXS();
+            break;
 
         //case 0x9B:
         //    // illegal opcode
@@ -828,9 +828,9 @@ void CPU::execute(const uint8_t& opcode) {
             absoluteY(&CPU::LDA);
             break;
 
-        //case 0xBA:
-        //    TSX();
-        //    break;
+        case 0xBA:
+            TSX();
+            break;
 
         //case 0xBB:
         //    // illegal opcode
@@ -1335,12 +1335,15 @@ void CPU::TAY()
 {
 }
 
-void CPU::TSX()
-{
+void CPU::TSX() {
+    r_x = sp;
+
+    setZeroFlag(r_x);
+    setNegativeFlag(r_x);
 }
 
-void CPU::TXA()
-{
+void CPU::TXA() {
+    sp = r_x;
 }
 
 void CPU::TXS()
