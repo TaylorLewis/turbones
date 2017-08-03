@@ -167,10 +167,10 @@ private:
     void ASL(); // Arithmetic Shift Left
     void BCC(); // Branch if Carry Clear
     void BCS(); // Branch if Carry Set
-    void BEQ(); // Branch if Equal
+    void BEQ(const int8_t& offset); // Branch if Equal
     void BIT(); // Bit Test
     void BMI(); // Branch if Minus
-    void BNE(); // Branch if Not Equal
+    void BNE(const int8_t& offset); // Branch if Not Equal
     void BPL(); // Branch if Positive
     void BRK(); // Force Interrupt
     void BVC(); // Branch if Overflow Clear

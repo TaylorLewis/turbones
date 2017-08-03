@@ -916,9 +916,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0xD0:
-        //    relative(&CPU::BNE);
-        //    break;
+        case 0xD0:
+            relative(&CPU::BNE);
+            break;
 
         //case 0xD1:
         //    indirectIndexed(&CPU::CMP);
@@ -1044,9 +1044,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0xF0:
-        //    relative(&CPU::BEQ);
-        //    break;
+        case 0xF0:
+            relative(&CPU::BEQ);
+            break;
 
         //case 0xF1:
         //    indirectIndexed(&CPU::SBC);
@@ -1139,8 +1139,9 @@ void CPU::BCS()
 {
 }
 
-void CPU::BEQ()
-{
+void CPU::BEQ(const int8_t& offset) {
+    if (r_p.test(ZERO_FLAG)) {
+        pc = (int)pc + offset; }
 }
 
 void CPU::BIT()
@@ -1151,8 +1152,10 @@ void CPU::BMI()
 {
 }
 
-void CPU::BNE()
-{
+void CPU::BNE(const int8_t& offset) {
+    if (!r_p.test(ZERO_FLAG)) {
+        pc = (int)pc + offset;
+    }
 }
 
 void CPU::BPL()
