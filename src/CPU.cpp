@@ -1139,7 +1139,8 @@ void CPU::BCS()
 {
 }
 
-void CPU::BEQ(const int8_t& offset) {
+void CPU::BEQ(const uint16_t& address) {
+    const int8_t offset = memory->read(address);
     if (r_p.test(ZERO_FLAG)) {
         pc = (int)pc + offset; }
 }
@@ -1152,10 +1153,10 @@ void CPU::BMI()
 {
 }
 
-void CPU::BNE(const int8_t& offset) {
+void CPU::BNE(const uint16_t& address) {
+    const int8_t offset = memory->read(address);
     if (!r_p.test(ZERO_FLAG)) {
-        pc = (int)pc + offset;
-    }
+        pc = (int)pc + offset; }
 }
 
 void CPU::BPL()

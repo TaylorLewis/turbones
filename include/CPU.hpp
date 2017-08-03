@@ -110,9 +110,10 @@ private:
     }
     // Corresponds to branch instructions. The (signed) 8-bit operand is an offset,
     // to be added to the PC if the condition is true, or ignored if false.
-    void relative(void (CPU::*instruction)(const int8_t&)) {
-        int8_t offset = (int8_t)fetch();
-        (this->*instruction)(offset);
+    void relative(void (CPU::*instruction)(const uint16_t&)) {
+        const uint16_t address = pc;
+        ++pc;
+        (this->*instruction)(address);
     }
     // Operand is a full 16-bit address.
     void absolute(void (CPU::*instruction)(const uint16_t&)) {
@@ -167,10 +168,10 @@ private:
     void ASL(); // Arithmetic Shift Left
     void BCC(); // Branch if Carry Clear
     void BCS(); // Branch if Carry Set
-    void BEQ(const int8_t& offset); // Branch if Equal
+    void BEQ(const uint16_t& address); // Branch if Equal
     void BIT(); // Bit Test
     void BMI(); // Branch if Minus
-    void BNE(const int8_t& offset); // Branch if Not Equal
+    void BNE(const uint16_t& address); // Branch if Not Equal
     void BPL(); // Branch if Positive
     void BRK(); // Force Interrupt
     void BVC(); // Branch if Overflow Clear
