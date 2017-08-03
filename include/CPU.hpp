@@ -94,9 +94,10 @@ private:
     //    (this->*instruction)();
     //}
     // Operand is an 8-bit constant value.
-    void immediate(void (CPU::*instruction)(const uint8_t&)) {
-        const uint8_t value = fetch();
-        (this->*instruction)(value);
+    void immediate(void (CPU::*instruction)(const uint16_t&)) {
+        const uint16_t address = pc;
+        ++pc;
+        (this->*instruction)(address);
     }
     // Operand is an 8-bit address, addressing only the first 0x100 bytes of memory.
     void zeroPage(void (CPU::*instruction)(const uint8_t&)) {
