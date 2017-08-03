@@ -724,33 +724,33 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0xA0:
-        //    immediate(&CPU::LDY);
-        //    break;
+        case 0xA0:
+            immediate(&CPU::LDY);
+            break;
 
-        //case 0xA1:
-        //    indexedIndirect(&CPU::LDA);
-        //    break;
+        case 0xA1:
+            indexedIndirect(&CPU::LDA);
+            break;
 
-        //case 0xA2:
-        //    immediate(&CPU::LDX);
-        //    break;
+        case 0xA2:
+            immediate(&CPU::LDX);
+            break;
 
         //case 0xA3:
         //    // illegal opcode
         //    break;
 
-        //case 0xA4:
-        //    zeroPage(&CPU::LDY);
-        //    break;
+        case 0xA4:
+            zeroPage(&CPU::LDY);
+            break;
 
-        //case 0xA5:
-        //    zeroPage(&CPU::LDA);
-        //    break;
+        case 0xA5:
+            zeroPage(&CPU::LDA);
+            break;
 
-        //case 0xA6:
-        //    zeroPage(&CPU::LDX);
-        //    break;
+        case 0xA6:
+            zeroPage(&CPU::LDX);
+            break;
 
         //case 0xA7:
         //    // illegal opcode
@@ -760,9 +760,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    TAY();
         //    break;
 
-        //case 0xA9:
-        //    immediate(&CPU::LDA);
-        //    break;
+        case 0xA9:
+            immediate(&CPU::LDA);
+            break;
 
         //case 0xAA:
         //    TAX();
@@ -772,17 +772,17 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0xAC:
-        //    absolute(&CPU::LDY);
-        //    break;
+        case 0xAC:
+            absolute(&CPU::LDY);
+            break;
 
-        //case 0xAD:
-        //    absolute(&CPU::LDA);
-        //    break;
+        case 0xAD:
+            absolute(&CPU::LDA);
+            break;
 
-        //case 0xAE:
-        //    absolute(&CPU::LDX);
-        //    break;
+        case 0xAE:
+            absolute(&CPU::LDX);
+            break;
 
         //case 0xAF:
         //    // illegal opcode
@@ -792,9 +792,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    relative(&CPU::BCS);
         //    break;
 
-        //case 0xB1:
-        //    indirectIndexed(&CPU::LDA);
-        //    break;
+        case 0xB1:
+            indirectIndexed(&CPU::LDA);
+            break;
 
         //case 0xB2:
         //    // STP
@@ -804,17 +804,17 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0xB4:
-        //    zeroPageX(&CPU::LDY);
-        //    break;
+        case 0xB4:
+            zeroPageX(&CPU::LDY);
+            break;
 
-        //case 0xB5:
-        //    zeroPageX(&CPU::LDA);
-        //    break;
+        case 0xB5:
+            zeroPageX(&CPU::LDA);
+            break;
 
-        //case 0xB6:
-        //    zeroPageY(&CPU::LDX);
-        //    break;
+        case 0xB6:
+            zeroPageY(&CPU::LDX);
+            break;
 
         //case 0xB7:
         //    // illegal opcode
@@ -824,9 +824,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    CLV();
         //    break;
 
-        //case 0xB9:
-        //    absoluteY(&CPU::LDA);
-        //    break;
+        case 0xB9:
+            absoluteY(&CPU::LDA);
+            break;
 
         //case 0xBA:
         //    TSX();
@@ -836,17 +836,17 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0xBC:
-        //    absoluteX(&CPU::LDY);
-        //    break;
+        case 0xBC:
+            absoluteX(&CPU::LDY);
+            break;
 
-        //case 0xBD:
-        //    absoluteX(&CPU::LDA);
-        //    break;
+        case 0xBD:
+            absoluteX(&CPU::LDA);
+            break;
 
-        //case 0xBE:
-        //    absoluteY(&CPU::LDX);
-        //    break;
+        case 0xBE:
+            absoluteY(&CPU::LDX);
+            break;
 
         //case 0xBF:
         //    // illegal opcode
@@ -1234,16 +1234,25 @@ void CPU::JSR(const uint16_t& address) {
     pc = address;
 }
 
-void CPU::LDA()
-{
+void CPU::LDA(const uint16_t& address) {
+    r_a = memory->read(address);
+
+    setZeroFlag(r_a);
+    setNegativeFlag(r_a);
 }
 
-void CPU::LDX()
-{
+void CPU::LDX(const uint16_t& address) {
+    r_x = memory->read(address);
+
+    setZeroFlag(r_x);
+    setNegativeFlag(r_x);
 }
 
-void CPU::LDY()
-{
+void CPU::LDY(const uint16_t& address) {
+    r_y = memory->read(address);
+
+    setZeroFlag(r_y);
+    setNegativeFlag(r_y);
 }
 
 void CPU::LSR()

@@ -191,9 +191,9 @@ private:
     void INY(); // Increment Y Register
     void JMP(); // Jump
     void JSR(const uint16_t& address); // Jump to Subroutine
-    void LDA(); // Load Accumulator
-    void LDX(); // Load X Register
-    void LDY(); // Load Y Register
+    void LDA(const uint16_t& address); // Load Accumulator
+    void LDX(const uint16_t& address); // Load X Register
+    void LDY(const uint16_t& address); // Load Y Register
     void LSR(); // Logical Shift Right
     void NOP(); // No Operation
     void ORA(); // Logical Inclusive OR
