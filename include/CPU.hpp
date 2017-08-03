@@ -209,9 +209,9 @@ private:
     void SEC(); // Set Carry Flag
     void SED(); // Set Decimal Flag
     void SEI(); // Set Interrupt Disable
-    void STA(); // Store Accumulator
-    void STX(); // Store X Register
-    void STY(); // Store Y Register
+    void STA(const uint16_t& address); // Store Accumulator
+    void STX(const uint16_t& address); // Store X Register
+    void STY(const uint16_t& address); // Store Y Register
     void TAX(); // Transfer Accumulator to X
     void TAY(); // Transfer Accumulator to Y
     void TSX(); // Transfer Stack Pointer to X

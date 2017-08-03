@@ -600,9 +600,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // NOP
         //    break;
 
-        //case 0x81:
-        //    indexedIndirect(&CPU::STA);
-        //    break;
+        case 0x81:
+            indexedIndirect(&CPU::STA);
+            break;
 
         //case 0x82:
         //    // NOP
@@ -612,17 +612,17 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0x84:
-        //    zeroPage(&CPU::STY);
-        //    break;
+        case 0x84:
+            zeroPage(&CPU::STY);
+            break;
 
-        //case 0x85:
-        //    zeroPage(&CPU::STA);
-        //    break;
+        case 0x85:
+            zeroPage(&CPU::STA);
+            break;
 
-        //case 0x86:
-        //    zeroPage(&CPU::STX);
-        //    break;
+        case 0x86:
+            zeroPage(&CPU::STX);
+            break;
 
         //case 0x87:
         //    // illegal opcode
@@ -644,17 +644,17 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0x8C:
-        //    absolute(&CPU::STY);
-        //    break;
+        case 0x8C:
+            absolute(&CPU::STY);
+            break;
 
-        //case 0x8D:
-        //    absolute(&CPU::STA);
-        //    break;
+        case 0x8D:
+            absolute(&CPU::STA);
+            break;
 
-        //case 0x8E:
-        //    absolute(&CPU::STX);
-        //    break;
+        case 0x8E:
+            absolute(&CPU::STX);
+            break;
 
         //case 0x8F:
         //    // illegal opcode
@@ -664,9 +664,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    relative(&CPU::BCC);
         //    break;
 
-        //case 0x91:
-        //    indirectIndexed(&CPU::STA);
-        //    break;
+        case 0x91:
+            indirectIndexed(&CPU::STA);
+            break;
 
         //case 0x92:
         //    // STP
@@ -676,17 +676,17 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0x94:
-        //    zeroPageX(&CPU::STY);
-        //    break;
+        case 0x94:
+            zeroPageX(&CPU::STY);
+            break;
 
-        //case 0x95:
-        //    zeroPageX(&CPU::STA);
-        //    break;
+        case 0x95:
+            zeroPageX(&CPU::STA);
+            break;
 
-        //case 0x96:
-        //    zeroPageY(&CPU::STX);
-        //    break;
+        case 0x96:
+            zeroPageY(&CPU::STX);
+            break;
 
         //case 0x97:
         //    // illegal opcode
@@ -696,9 +696,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    TYA();
         //    break;
 
-        //case 0x99:
-        //    absoluteY(&CPU::STA);
-        //    break;
+        case 0x99:
+            absoluteY(&CPU::STA);
+            break;
 
         //case 0x9A:
         //    TXS();
@@ -712,9 +712,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // SHY
         //    break;
 
-        //case 0x9D:
-        //    absoluteX(&CPU::STA);
-        //    break;
+        case 0x9D:
+            absoluteX(&CPU::STA);
+            break;
 
         //case 0x9E:
         //    // SHX
@@ -1315,16 +1315,16 @@ void CPU::SEI() {
     r_p.set(INTERRUPT_DISABLE);
 }
 
-void CPU::STA()
-{
+void CPU::STA(const uint16_t& address) {
+    memory->write(address, r_a);
 }
 
-void CPU::STX()
-{
+void CPU::STX(const uint16_t& address) {
+    memory->write(address, r_x);
 }
 
-void CPU::STY()
-{
+void CPU::STY(const uint16_t& address) {
+    memory->write(address, r_y);
 }
 
 void CPU::TAX()
