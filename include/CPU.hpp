@@ -171,7 +171,7 @@ private:
     void BCC(); // Branch if Carry Clear
     void BCS(); // Branch if Carry Set
     void BEQ(const uint16_t& address); // Branch if Equal
-    void BIT(); // Bit Test
+    void BIT(const uint16_t& address); // Bit Test
     void BMI(const uint16_t& address); // Branch if Minus
     void BNE(const uint16_t& address); // Branch if Not Equal
     void BPL(const uint16_t& address); // Branch if Positive

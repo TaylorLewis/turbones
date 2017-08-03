@@ -228,9 +228,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0x24:
-        //    zeroPage(&CPU::BIT);
-        //    break;
+        case 0x24:
+            zeroPage(&CPU::BIT);
+            break;
 
         case 0x25:
             zeroPage(&CPU::AND);
@@ -260,9 +260,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // illegal opcode
         //    break;
 
-        //case 0x2C:
-        //    absolute(&CPU::BIT);
-        //    break;
+        case 0x2C:
+            absolute(&CPU::BIT);
+            break;
 
         case 0x2D:
             absolute(&CPU::AND);
@@ -1145,8 +1145,12 @@ void CPU::BEQ(const uint16_t& address) {
         pc = (int)pc + offset; }
 }
 
-void CPU::BIT()
-{
+void CPU::BIT(const uint16_t& address) {
+    const uint8_t value = memory->read(address);
+    r_p.set(OVERFLOW_FLAG,
+            ((value >> 6) & 1));
+    setZeroFlag(value & r_a);
+    setNegativeFlag(value);
 }
 
 void CPU::BMI(const uint16_t& address) {
