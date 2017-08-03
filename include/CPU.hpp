@@ -163,7 +163,7 @@ private:
 
     // Instructions
     void ADC(); // Add with Carry
-    void AND(); // Logical AND
+    void AND(const uint16_t& address); // Logical AND
     void ASL(); // Arithmetic Shift Left
     void BCC(); // Branch if Carry Clear
     void BCS(); // Branch if Carry Set
@@ -185,7 +185,7 @@ private:
     void DEC(); // Decrement Memory
     void DEX(); // Decrement X Register
     void DEY(); // Decrement Y Register
-    void EOR(); // Exclusive OR
+    void EOR(const uint16_t& address); // Exclusive OR
     void INC(); // Increment Memory
     void INX(); // Increment X Register
     void INY(); // Increment Y Register
@@ -196,7 +196,7 @@ private:
     void LDY(const uint16_t& address); // Load Y Register
     void LSR(); // Logical Shift Right
     void NOP(); // No Operation
-    void ORA(); // Logical Inclusive OR
+    void ORA(const uint16_t& address); // Logical Inclusive OR
     void PHA(); // Push Accumulator
     void PHP(); // Push Processor Status
     void PLA(); // Pull Accumulator

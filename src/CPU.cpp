@@ -88,9 +88,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    BRK();
         //    break;
 
-        //case 0x01:
-        //    indexedIndirect(&CPU::ORA);
-        //    break;
+        case 0x01:
+            indexedIndirect(&CPU::ORA);
+            break;
 
         //case 0x02:
         //    // STP
@@ -104,9 +104,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // NOP
         //    break;
 
-        //case 0x05:
-        //    zeroPageX(&CPU::ORA);
-        //    break;
+        case 0x05:
+            zeroPageX(&CPU::ORA);
+            break;
 
         //case 0x06:
         //    zeroPage(&CPU::ASL);
@@ -120,9 +120,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    PHP();
         //    break;
 
-        //case 0x09:
-        //    immediate(&CPU::ORA);
-        //    break;
+        case 0x09:
+            immediate(&CPU::ORA);
+            break;
 
         //case 0x0A:
         //    ASL();
@@ -136,9 +136,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // NOP
         //    break;
 
-        //case 0x0D:
-        //    absolute(&CPU::ORA);
-        //    break;
+        case 0x0D:
+            absolute(&CPU::ORA);
+            break;
 
         //case 0x0E:
         //    absolute(&CPU::ASL);
@@ -152,9 +152,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    relative(&CPU::BPL);
         //    break;
 
-        //case 0x11:
-        //    indirectIndexed(&CPU::ORA);
-        //    break;
+        case 0x11:
+            indirectIndexed(&CPU::ORA);
+            break;
 
         //case 0x12:
         //    // STP
@@ -168,9 +168,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // NOP
         //    break;
 
-        //case 0x15:
-        //    zeroPageX(&CPU::ORA);
-        //    break;
+        case 0x15:
+            zeroPageX(&CPU::ORA);
+            break;
 
         //case 0x16:
         //    zeroPageX(&CPU::ASL);
@@ -184,9 +184,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    CLC();
         //    break;
 
-        //case 0x19:
-        //    absoluteY(&CPU::ORA);
-        //    break;
+        case 0x19:
+            absoluteY(&CPU::ORA);
+            break;
 
         //case 0x1A:
         //    // NOP
@@ -200,9 +200,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // NOP
         //    break;
 
-        //case 0x1D:
-        //    absoluteX(&CPU::ORA);
-        //    break;
+        case 0x1D:
+            absoluteX(&CPU::ORA);
+            break;
 
         //case 0x1E:
         //    absoluteX(&CPU::ASL);
@@ -216,9 +216,9 @@ void CPU::execute(const uint8_t& opcode) {
             absolute(&CPU::JSR);
             break;
 
-        //case 0x21:
-        //    indexedIndirect(&CPU::AND);
-        //    break;
+        case 0x21:
+            indexedIndirect(&CPU::AND);
+            break;
 
         //case 0x22:
         //    // STP
@@ -232,9 +232,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    zeroPage(&CPU::BIT);
         //    break;
 
-        //case 0x25:
-        //    zeroPage(&CPU::AND);
-        //    break;
+        case 0x25:
+            zeroPage(&CPU::AND);
+            break;
 
         //case 0x26:
         //    zeroPage(&CPU::ROL);
@@ -248,9 +248,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    PLP();
         //    break;
 
-        //case 0x29:
-        //    immediate(&CPU::AND);
-        //    break;
+        case 0x29:
+            immediate(&CPU::AND);
+            break;
 
         //case 0x2A:
         //    ROL();
@@ -264,9 +264,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    absolute(&CPU::BIT);
         //    break;
 
-        //case 0x2D:
-        //    absolute(&CPU::AND);
-        //    break;
+        case 0x2D:
+            absolute(&CPU::AND);
+            break;
 
         //case 0x2E:
         //    absolute(&CPU::ROL);
@@ -280,9 +280,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    relative(&CPU::BMI);
         //    break;
 
-        //case 0x31:
-        //    indirectIndexed(AND);
-        //    break;
+        case 0x31:
+            indirectIndexed(&CPU::AND);
+            break;
 
         //case 0x32:
         //    // STP
@@ -296,9 +296,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // NOP
         //    break;
 
-        //case 0x35:
-        //    zeroPageX(&CPU::AND);
-        //    break;
+        case 0x35:
+            zeroPageX(&CPU::AND);
+            break;
 
         //case 0x36:
         //    zeroPageX(&CPU::ROL);
@@ -312,9 +312,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    SEC();
         //    break;
 
-        //case 0x39:
-        //    absoluteY(&CPU::AND);
-        //    break;
+        case 0x39:
+            absoluteY(&CPU::AND);
+            break;
 
         //case 0x3A:
         //    // NOP
@@ -328,9 +328,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // NOP
         //    break;
 
-        //case 0x3D:
-        //    absoluteX(&CPU::AND);
-        //    break;
+        case 0x3D:
+            absoluteX(&CPU::AND);
+            break;
 
         //case 0x3E:
         //    absoluteX(&CPU::ROL);
@@ -344,9 +344,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    RTI();
         //    break;
 
-        //case 0x41:
-        //    indexedIndirect(&CPU::EOR);
-        //    break;
+        case 0x41:
+            indexedIndirect(&CPU::EOR);
+            break;
 
         //case 0x42:
         //    // STP
@@ -360,9 +360,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // NOP
         //    break;
 
-        //case 0x45:
-        //    zeroPage(&CPU::EOR);
-        //    break;
+        case 0x45:
+            zeroPage(&CPU::EOR);
+            break;
 
         //case 0x46:
         //    zeroPage(&CPU::LSR);
@@ -376,9 +376,9 @@ void CPU::execute(const uint8_t& opcode) {
             PHA();
             break;
 
-        //case 0x49:
-        //    immediate(&CPU::EOR);
-        //    break;
+        case 0x49:
+            immediate(&CPU::EOR);
+            break;
 
         //case 0x4A:
         //    LSR();
@@ -392,9 +392,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    absolute(&CPU::JMP);
         //    break;
 
-        //case 0x4D:
-        //    absolute(&CPU::EOR);
-        //    break;
+        case 0x4D:
+            absolute(&CPU::EOR);
+            break;
 
         //case 0x4E:
         //    absolute(&CPU::LSR);
@@ -408,9 +408,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    relative(&CPU::BVC);
         //    break;
 
-        //case 0x51:
-        //    indirectIndexed(&CPU::EOR);
-        //    break;
+        case 0x51:
+            indirectIndexed(&CPU::EOR);
+            break;
 
         //case 0x52:
         //    // STP
@@ -424,9 +424,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // NOP
         //    break;
 
-        //case 0x55:
-        //    zeroPageX(&CPU::EOR);
-        //    break;
+        case 0x55:
+            zeroPageX(&CPU::EOR);
+            break;
 
         //case 0x56:
         //    zeroPageX(&CPU::LSR);
@@ -440,9 +440,9 @@ void CPU::execute(const uint8_t& opcode) {
             CLI();
             break;
 
-        //case 0x59:
-        //    absoluteY(&CPU::EOR);
-        //    break;
+        case 0x59:
+            absoluteY(&CPU::EOR);
+            break;
 
         //case 0x5A:
         //    // NOP
@@ -456,9 +456,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // NOP
         //    break;
 
-        //case 0x5D:
-        //    absoluteX(&CPU::EOR);
-        //    break;
+        case 0x5D:
+            absoluteX(&CPU::EOR);
+            break;
 
         //case 0x5E:
         //    absoluteX(&CPU::LSR);
@@ -1121,8 +1121,10 @@ void CPU::ADC()
 {
 }
 
-void CPU::AND()
-{
+void CPU::AND(const uint16_t& address) {
+    r_a &= memory->read(address);
+    setZeroFlag(r_a);
+    setNegativeFlag(r_a);
 }
 
 void CPU::ASL()
@@ -1209,8 +1211,10 @@ void CPU::DEY()
 {
 }
 
-void CPU::EOR()
-{
+void CPU::EOR(const uint16_t& address) {
+    r_a ^= memory->read(address);
+    setZeroFlag(r_a);
+    setNegativeFlag(r_a);
 }
 
 void CPU::INC()
@@ -1263,8 +1267,10 @@ void CPU::NOP()
 {
 }
 
-void CPU::ORA()
-{
+void CPU::ORA(const uint16_t& address) {
+    r_a |= memory->read(address);
+    setZeroFlag(r_a);
+    setNegativeFlag(r_a);
 }
 
 void CPU::PHA() {
