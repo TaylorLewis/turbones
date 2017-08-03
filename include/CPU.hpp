@@ -48,6 +48,9 @@ private:
     // Pops two 8-bit values and returns them concatenated as a 16-bit value.
     uint16_t pop16();
 
+    void setZeroFlag(const uint8_t& value);
+    void setNegativeFlag(const uint8_t& value);
+
     Memory* memory;
 
     // Tracks number of emulated cycles.

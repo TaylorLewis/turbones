@@ -61,6 +61,16 @@ uint16_t CPU::pop16() {
     return (hi << 8) | lo;
 }
 
+void CPU::setZeroFlag(const uint8_t& value) {
+    const bool isZero = (value == 0);
+    r_p.set(ZERO_FLAG, isZero);
+}
+
+void CPU::setNegativeFlag(const uint8_t& value) {
+    const bool negativeBit = ((value) & 0b1000'0000);
+    r_p.set(NEGATIVE_FLAG, negativeBit);
+}
+
 void CPU::step() {
     // TODO: Handle interrupts
 
