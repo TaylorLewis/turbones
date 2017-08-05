@@ -206,8 +206,10 @@ private:
     void PHP(); // Push Processor Status
     void PLA(); // Pull Accumulator
     void PLP(); // Pull Processor Status
-    void ROL(); // Rotate Left
-    void ROR(); // Rotate Right
+    void ROL(); // Rotate Left (Accumulator)
+    void ROL(const uint16_t& address); // Rotate Left
+    void ROR(); // Rotate Right (Accumulator)
+    void ROR(const uint16_t& address); // Rotate Right
     void RTI(); // Return from Interrupt
     void RTS(); // Return from Subroutine
     void SBC(); // Subtract with Carry

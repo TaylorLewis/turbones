@@ -236,9 +236,9 @@ void CPU::execute(const uint8_t& opcode) {
             zeroPage(&CPU::AND);
             break;
 
-        //case 0x26:
-        //    zeroPage(&CPU::ROL);
-        //    break;
+        case 0x26:
+            zeroPage(&CPU::ROL);
+            break;
 
         //case 0x27:
         //    // unofficial opcode
@@ -252,9 +252,9 @@ void CPU::execute(const uint8_t& opcode) {
             immediate(&CPU::AND);
             break;
 
-        //case 0x2A:
-        //    ROL();
-        //    break;
+        case 0x2A:
+            ROL();
+            break;
 
         //case 0x2B:
         //    // unofficial opcode
@@ -268,9 +268,9 @@ void CPU::execute(const uint8_t& opcode) {
             absolute(&CPU::AND);
             break;
 
-        //case 0x2E:
-        //    absolute(&CPU::ROL);
-        //    break;
+        case 0x2E:
+            absolute(&CPU::ROL);
+            break;
 
         //case 0x2F:
         //    // unofficial opcode
@@ -300,9 +300,9 @@ void CPU::execute(const uint8_t& opcode) {
             zeroPageX(&CPU::AND);
             break;
 
-        //case 0x36:
-        //    zeroPageX(&CPU::ROL);
-        //    break;
+        case 0x36:
+            zeroPageX(&CPU::ROL);
+            break;
 
         //case 0x37:
         //    // unofficial opcode
@@ -332,9 +332,9 @@ void CPU::execute(const uint8_t& opcode) {
             absoluteX(&CPU::AND);
             break;
 
-        //case 0x3E:
-        //    absoluteX(&CPU::ROL);
-        //    break;
+        case 0x3E:
+            absoluteX(&CPU::ROL);
+            break;
 
         //case 0x3F:
         //    // unofficial opcode
@@ -492,9 +492,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    zeroPage(&CPU::ADC);
         //    break;
 
-        //case 0x66:
-        //    zeroPage(&CPU::ROR);
-        //    break;
+        case 0x66:
+            zeroPage(&CPU::ROR);
+            break;
 
         //case 0x67:
         //    // unofficial opcode
@@ -508,9 +508,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    immediate(&CPU::ADC);
         //    break;
 
-        //case 0x6A:
-        //    ROR();
-        //    break;
+        case 0x6A:
+            ROR();
+            break;
 
         //case 0x6B:
         //    // unofficial opcode
@@ -524,9 +524,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    absolute(&CPU::ADC);
         //    break;
 
-        //case 0x6E:
-        //    absolute(&CPU::ROR);
-        //    break;
+        case 0x6E:
+            absolute(&CPU::ROR);
+            break;
 
         //case 0x6F:
         //    // unofficial opcode
@@ -556,9 +556,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    zeroPageX(&CPU::ADC);
         //    break;
 
-        //case 0x76:
-        //    zeroPageX(&CPU::ROR);
-        //    break;
+        case 0x76:
+            zeroPageX(&CPU::ROR);
+            break;
 
         //case 0x77:
         //    // unofficial opcode
@@ -588,9 +588,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    absoluteX(&CPU::ADC);
         //    break;
 
-        //case 0x7E:
-        //    absoluteX(&CPU::ROR);
-        //    break;
+        case 0x7E:
+            absoluteX(&CPU::ROR);
+            break;
 
         //case 0x7F:
         //    // unofficial opcode
@@ -1361,12 +1361,38 @@ void CPU::PLP()
 {
 }
 
-void CPU::ROL()
-{
+void CPU::ROL() {
+    const uint8_t carry_bit = r_a & 0b1000'0000;
+    r_a = (r_a << 1) & r_p.test(CARRY_FLAG);
+    r_p.set(CARRY_FLAG, carry_bit);
+    setZeroFlag(r_a);
+    setNegativeFlag(r_a);
 }
 
-void CPU::ROR()
-{
+void CPU::ROL(const uint16_t& address) {
+    const uint8_t value = memory->read(address);
+    const uint8_t carry_bit = value & 0b1000'0000;
+    const uint8_t result = (value << 1) & r_p.test(CARRY_FLAG);
+    r_p.set(CARRY_FLAG, carry_bit);
+    setZeroFlag(result);
+    setNegativeFlag(result);
+}
+
+void CPU::ROR() {
+    const uint8_t carry_bit = r_a & 0b0000'0001;
+    r_a = (r_a >> 1) & (r_p.test(CARRY_FLAG) << 7);
+    r_p.set(CARRY_FLAG, carry_bit);
+    setZeroFlag(r_a);
+    setNegativeFlag(r_a);
+}
+
+void CPU::ROR(const uint16_t& address) {
+    const uint8_t value = memory->read(address);
+    const uint8_t carry_bit = value & 0b0000'0001;
+    const uint8_t result = (value >> 1) & (r_p.test(CARRY_FLAG) << 7);
+    r_p.set(CARRY_FLAG, carry_bit);
+    setZeroFlag(result);
+    setNegativeFlag(result);
 }
 
 void CPU::RTI()
