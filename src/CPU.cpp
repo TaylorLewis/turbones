@@ -1139,6 +1139,7 @@ void CPU::ASL(const uint16_t& address) {
     const uint8_t value = memory->read(address);
     const uint8_t carry_bit = value & 0b1000'0000;
     const uint8_t result = value << 1;
+    memory->write(address, result);
     r_p.set(CARRY_FLAG, carry_bit);
     setZeroFlag(result);
     setNegativeFlag(result);
@@ -1330,6 +1331,7 @@ void CPU::LSR(const uint16_t& address) {
     const uint8_t value = memory->read(address);
     const uint8_t carry_bit = value & 0b0000'0001;
     const uint8_t result = value >> 1;
+    memory->write(address, result);
     r_p.set(CARRY_FLAG, carry_bit);
     setZeroFlag(result);
     setNegativeFlag(result);
@@ -1373,6 +1375,7 @@ void CPU::ROL(const uint16_t& address) {
     const uint8_t value = memory->read(address);
     const uint8_t carry_bit = value & 0b1000'0000;
     const uint8_t result = (value << 1) & r_p.test(CARRY_FLAG);
+    memory->write(address, result);
     r_p.set(CARRY_FLAG, carry_bit);
     setZeroFlag(result);
     setNegativeFlag(result);
@@ -1390,6 +1393,7 @@ void CPU::ROR(const uint16_t& address) {
     const uint8_t value = memory->read(address);
     const uint8_t carry_bit = value & 0b0000'0001;
     const uint8_t result = (value >> 1) & (r_p.test(CARRY_FLAG) << 7);
+    memory->write(address, result);
     r_p.set(CARRY_FLAG, carry_bit);
     setZeroFlag(result);
     setNegativeFlag(result);
