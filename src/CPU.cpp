@@ -84,9 +84,9 @@ void CPU::execute(const uint8_t& opcode) {
     std::cout << "CPU::execute opcode: " << std::hex << (int)opcode << std::endl;  //d
     switch (opcode) {
 
-        //case 0x00:
-        //    BRK();
-        //    break;
+        case 0x00:
+            BRK();
+            break;
 
         case 0x01:
             indexedIndirect(&CPU::ORA);
@@ -340,9 +340,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // unofficial opcode
         //    break;
 
-        //case 0x40:
-        //    RTI();
-        //    break;
+        case 0x40:
+            RTI();
+            break;
 
         case 0x41:
             indexedIndirect(&CPU::EOR);
@@ -1197,8 +1197,11 @@ void CPU::BPL(const uint16_t& address) {
         pc = (int)pc + offset; }
 }
 
-void CPU::BRK()
-{
+void CPU::BRK() {
+    push16(pc);
+    push((uint8_t)r_p.to_ulong());
+    pc = read16(0xFFFE);
+    r_p.set(BREAK_MODE_FLAG);
 }
 
 void CPU::BVC(const uint16_t& address) {
@@ -1409,8 +1412,9 @@ void CPU::ROR(const uint16_t& address) {
     setNegativeFlag(result);
 }
 
-void CPU::RTI()
-{
+void CPU::RTI() {
+    r_p = pop();
+    pc = pop16();
 }
 
 void CPU::RTS() {
