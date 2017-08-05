@@ -165,7 +165,7 @@ private:
 
 
     // Instructions
-    void ADC(); // Add with Carry
+    void ADC(const uint16_t& address); // Add with Carry
     void AND(const uint16_t& address); // Logical AND
     void ASL(); // Arithmetic Shift Left (Accumulator)
     void ASL(const uint16_t& address); // Arithmetic Shift Left
@@ -212,7 +212,7 @@ private:
     void ROR(const uint16_t& address); // Rotate Right
     void RTI(); // Return from Interrupt
     void RTS(); // Return from Subroutine
-    void SBC(); // Subtract with Carry
+    void SBC(const uint16_t& address); // Subtract with Carry
     void SEC(); // Set Carry Flag
     void SED(); // Set Decimal Flag
     void SEI(); // Set Interrupt Disable

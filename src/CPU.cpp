@@ -93,7 +93,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0x02:
-        //    // STP
+        //    // unofficial opcode: STP
         //    break;
 
         //case 0x03:
@@ -157,7 +157,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0x12:
-        //    // STP
+        //    // unofficial opcode: STP
         //    break;
 
         //case 0x13:
@@ -221,7 +221,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0x22:
-        //    // STP
+        //    // unofficial opcode: STP
         //    break;
 
         //case 0x23:
@@ -285,7 +285,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0x32:
-        //    // STP
+        //    // unofficial opcode: STP
         //    break;
 
         //case 0x33:
@@ -349,7 +349,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0x42:
-        //    // STP
+        //    // unofficial opcode: STP
         //    break;
 
         //case 0x43:
@@ -413,7 +413,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0x52:
-        //    // STP
+        //    // unofficial opcode: STP
         //    break;
 
         //case 0x53:
@@ -468,16 +468,16 @@ void CPU::execute(const uint8_t& opcode) {
         //    // unofficial opcode
         //    break;
 
-        //case 0x60:
-        //    RTS();
-        //    break;
+        case 0x60:
+            RTS();
+            break;
 
-        //case 0x61:
-        //    indexedIndirect(&CPU::ADC);
-        //    break;
+        case 0x61:
+            indexedIndirect(&CPU::ADC);
+            break;
 
         //case 0x62:
-        //    // STP
+        //    // unofficial opcode: STP
         //    break;
 
         //case 0x63:
@@ -488,9 +488,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // unofficial opcode: NOP
         //    break;
 
-        //case 0x65:
-        //    zeroPage(&CPU::ADC);
-        //    break;
+        case 0x65:
+            zeroPage(&CPU::ADC);
+            break;
 
         case 0x66:
             zeroPage(&CPU::ROR);
@@ -504,9 +504,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    PLA();
         //    break;
 
-        //case 0x69:
-        //    immediate(&CPU::ADC);
-        //    break;
+        case 0x69:
+            immediate(&CPU::ADC);
+            break;
 
         case 0x6A:
             ROR();
@@ -520,9 +520,9 @@ void CPU::execute(const uint8_t& opcode) {
             indirect(&CPU::JMP);
             break;
 
-        //case 0x6D:
-        //    absolute(&CPU::ADC);
-        //    break;
+        case 0x6D:
+            absolute(&CPU::ADC);
+            break;
 
         case 0x6E:
             absolute(&CPU::ROR);
@@ -536,12 +536,12 @@ void CPU::execute(const uint8_t& opcode) {
             relative(&CPU::BVS);
             break;
 
-        //case 0x71:
-        //    indirectIndexed(&CPU::ADC);
-        //    break;
+        case 0x71:
+            indirectIndexed(&CPU::ADC);
+            break;
 
         //case 0x72:
-        //    // STP
+        //    // unofficial opcode: STP
         //    break;
 
         //case 0x73:
@@ -552,9 +552,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // unofficial opcode: NOP
         //    break;
 
-        //case 0x75:
-        //    zeroPageX(&CPU::ADC);
-        //    break;
+        case 0x75:
+            zeroPageX(&CPU::ADC);
+            break;
 
         case 0x76:
             zeroPageX(&CPU::ROR);
@@ -568,9 +568,9 @@ void CPU::execute(const uint8_t& opcode) {
             SEI();
             break;
 
-        //case 0x79:
-        //    absoluteY(&CPU::ADC);
-        //    break;
+        case 0x79:
+            absoluteY(&CPU::ADC);
+            break;
 
         //case 0x7A:
         //    // unofficial opcode: NOP
@@ -584,9 +584,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // unofficial opcode: NOP
         //    break;
 
-        //case 0x7D:
-        //    absoluteX(&CPU::ADC);
-        //    break;
+        case 0x7D:
+            absoluteX(&CPU::ADC);
+            break;
 
         case 0x7E:
             absoluteX(&CPU::ROR);
@@ -669,7 +669,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0x92:
-        //    // STP
+        //    // unofficial opcode: STP
         //    break;
 
         //case 0x93:
@@ -709,7 +709,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         //case 0x9C:
-        //    // SHY
+        //    // unofficial opcode: SHY
         //    break;
 
         case 0x9D:
@@ -717,7 +717,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0x9E:
-        //    // SHX
+        //    // unofficial opcode: SHX
         //    break;
 
         //case 0x9F:
@@ -797,7 +797,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0xB2:
-        //    // STP
+        //    // unofficial opcode: STP
         //    break;
 
         //case 0xB3:
@@ -925,7 +925,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         //case 0xD2:
-        //    // STP
+        //    // unofficial opcode: STP
         //    break;
 
         //case 0xD3:
@@ -984,9 +984,9 @@ void CPU::execute(const uint8_t& opcode) {
             immediate(&CPU::CPX);
             break;
 
-        //case 0xE1:
-        //    indexedIndirect(&CPU::SBC);
-        //    break;
+        case 0xE1:
+            indexedIndirect(&CPU::SBC);
+            break;
 
         //case 0xE2:
         //    // unofficial opcode: NOP
@@ -1000,9 +1000,9 @@ void CPU::execute(const uint8_t& opcode) {
             zeroPage(&CPU::CPX);
             break;
 
-        //case 0xE5:
-        //    zeroPage(&CPU::SBC);
-        //    break;
+        case 0xE5:
+            zeroPage(&CPU::SBC);
+            break;
 
         case 0xE6:
             zeroPage(&CPU::INC);
@@ -1016,9 +1016,9 @@ void CPU::execute(const uint8_t& opcode) {
             INX();
             break;
 
-        //case 0xE9:
-        //    immediate(&CPU::SBC);
-        //    break;
+        case 0xE9:
+            immediate(&CPU::SBC);
+            break;
 
         case 0xEA:
             NOP();
@@ -1032,9 +1032,9 @@ void CPU::execute(const uint8_t& opcode) {
             absolute(&CPU::CPX);
             break;
 
-        //case 0xED:
-        //    absolute(&CPU::SBC);
-        //    break;
+        case 0xED:
+            absolute(&CPU::SBC);
+            break;
 
         case 0xEE:
             absolute(&CPU::INC);
@@ -1048,12 +1048,12 @@ void CPU::execute(const uint8_t& opcode) {
             relative(&CPU::BEQ);
             break;
 
-        //case 0xF1:
-        //    indirectIndexed(&CPU::SBC);
-        //    break;
+        case 0xF1:
+            indirectIndexed(&CPU::SBC);
+            break;
 
         //case 0xF2:
-        //    // STP
+        //    // unofficial opcode: STP
         //    break;
 
         //case 0xF3:
@@ -1064,9 +1064,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // unofficial opcode: NOP
         //    break;
 
-        //case 0xF5:
-        //    zeroPageX(&CPU::SBC);
-        //    break;
+        case 0xF5:
+            zeroPageX(&CPU::SBC);
+            break;
 
         case 0xF6:
             zeroPageX(&CPU::INC);
@@ -1080,9 +1080,9 @@ void CPU::execute(const uint8_t& opcode) {
             SED();
             break;
 
-        //case 0xF9:
-        //    absolute(&CPU::SBC);
-        //    break;
+        case 0xF9:
+            absolute(&CPU::SBC);
+            break;
 
         //case 0xFA:
         //    // unofficial opcode: NOP
@@ -1096,9 +1096,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // unofficial opcode: NOP
         //    break;
 
-        //case 0xFD:
-        //    absoluteX(&CPU::SBC);
-        //    break;
+        case 0xFD:
+            absoluteX(&CPU::SBC);
+            break;
 
         case 0xFE:
             absoluteX(&CPU::INC);
@@ -1117,8 +1117,16 @@ void CPU::execute(const uint8_t& opcode) {
 
 
 
-void CPU::ADC()
-{
+void CPU::ADC(const uint16_t& address) {
+    const uint8_t value = memory->read(address);
+    const unsigned int sum = (int)r_a + (int)value + r_p.test(CARRY_FLAG);
+    r_p.set(CARRY_FLAG,  // Unsigned overflow
+            sum & 0b1'0000'0000);
+    r_p.set(OVERFLOW_FLAG, // Signed overflow
+            ~(r_a ^ value) & (r_a ^ sum) & 0b1000'0000);
+    r_a = (uint8_t)sum;
+    setZeroFlag(r_a);
+    setNegativeFlag(r_a);
 }
 
 void CPU::AND(const uint16_t& address) {
@@ -1407,8 +1415,16 @@ void CPU::RTS() {
     pc = pop16() + 1;
 }
 
-void CPU::SBC()
-{
+void CPU::SBC(const uint16_t& address) {
+    const uint8_t value = memory->read(address) ^ 0xFF;
+    const unsigned int sum = (int)r_a + (int)value + r_p.test(CARRY_FLAG);
+    r_p.set(CARRY_FLAG,  // Unsigned overflow
+        sum & 0b1'0000'0000);
+    r_p.set(OVERFLOW_FLAG, // Signed overflow
+        ~(r_a ^ value) & (r_a ^ sum) & 0b1000'0000);
+    r_a = (uint8_t)sum;
+    setZeroFlag(r_a);
+    setNegativeFlag(r_a);
 }
 
 void CPU::SEC() {
