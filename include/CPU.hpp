@@ -167,7 +167,7 @@ private:
     // Instructions
     void ADC(const uint16_t& address); // Add with Carry
     void AND(const uint16_t& address); // Logical AND
-    void ASL(); // Arithmetic Shift Left (Accumulator)
+    void ASL();                        // Arithmetic Shift Left (Accumulator)
     void ASL(const uint16_t& address); // Arithmetic Shift Left
     void BCC(const uint16_t& address); // Branch if Carry Clear
     void BCS(const uint16_t& address); // Branch if Carry Set
@@ -176,53 +176,53 @@ private:
     void BMI(const uint16_t& address); // Branch if Minus
     void BNE(const uint16_t& address); // Branch if Not Equal
     void BPL(const uint16_t& address); // Branch if Positive
-    void BRK(); // Force Interrupt
+    void BRK();                        // Force Interrupt
     void BVC(const uint16_t& address); // Branch if Overflow Clear
     void BVS(const uint16_t& address); // Branch if Overflow Set
-    void CLC(); // Clear Carry Flag
-    void CLD(); // Clear Decimal Mode
-    void CLI(); // Clear Interrupt Disable
-    void CLV(); // Clear Overflow Flag
+    void CLC();                        // Clear Carry Flag
+    void CLD();                        // Clear Decimal Mode
+    void CLI();                        // Clear Interrupt Disable
+    void CLV();                        // Clear Overflow Flag
     void CMP(const uint16_t& address); // Compare
     void CPX(const uint16_t& address); // Compare X Register
     void CPY(const uint16_t& address); // Compare Y Register
     void DEC(const uint16_t& address); // Decrement Memory
-    void DEX(); // Decrement X Register
-    void DEY(); // Decrement Y Register
+    void DEX();                        // Decrement X Register
+    void DEY();                        // Decrement Y Register
     void EOR(const uint16_t& address); // Exclusive OR
     void INC(const uint16_t& address); // Increment Memory
-    void INX(); // Increment X Register
-    void INY(); // Increment Y Register
+    void INX();                        // Increment X Register
+    void INY();                        // Increment Y Register
     void JMP(const uint16_t& address); // Jump
     void JSR(const uint16_t& address); // Jump to Subroutine
     void LDA(const uint16_t& address); // Load Accumulator
     void LDX(const uint16_t& address); // Load X Register
     void LDY(const uint16_t& address); // Load Y Register
-    void LSR(); // Logical Shift Right (Accumulator)
+    void LSR();                        // Logical Shift Right (Accumulator)
     void LSR(const uint16_t& address); // Logical Shift Right
-    void NOP(); // No Operation
+    void NOP();                        // No Operation
     void ORA(const uint16_t& address); // Logical Inclusive OR
-    void PHA(); // Push Accumulator
-    void PHP(); // Push Processor Status
-    void PLA(); // Pull Accumulator
-    void PLP(); // Pull Processor Status
-    void ROL(); // Rotate Left (Accumulator)
+    void PHA();                        // Push Accumulator
+    void PHP();                        // Push Processor Status
+    void PLA();                        // Pull Accumulator
+    void PLP();                        // Pull Processor Status
+    void ROL();                        // Rotate Left (Accumulator)
     void ROL(const uint16_t& address); // Rotate Left
-    void ROR(); // Rotate Right (Accumulator)
+    void ROR();                        // Rotate Right (Accumulator)
     void ROR(const uint16_t& address); // Rotate Right
-    void RTI(); // Return from Interrupt
-    void RTS(); // Return from Subroutine
+    void RTI();                        // Return from Interrupt
+    void RTS();                        // Return from Subroutine
     void SBC(const uint16_t& address); // Subtract with Carry
-    void SEC(); // Set Carry Flag
-    void SED(); // Set Decimal Flag
-    void SEI(); // Set Interrupt Disable
+    void SEC();                        // Set Carry Flag
+    void SED();                        // Set Decimal Flag
+    void SEI();                        // Set Interrupt Disable
     void STA(const uint16_t& address); // Store Accumulator
     void STX(const uint16_t& address); // Store X Register
     void STY(const uint16_t& address); // Store Y Register
-    void TAX(); // Transfer Accumulator to X
-    void TAY(); // Transfer Accumulator to Y
-    void TSX(); // Transfer Stack Pointer to X
-    void TXA(); // Transfer X to Accumulator
-    void TXS(); // Transfer X to Stack Pointer
-    void TYA(); // Transfer Y to Accumulator
+    void TAX();                        // Transfer Accumulator to X
+    void TAY();                        // Transfer Accumulator to Y
+    void TSX();                        // Transfer Stack Pointer to X
+    void TXA();                        // Transfer X to Accumulator
+    void TXS();                        // Transfer X to Stack Pointer
+    void TYA();                        // Transfer Y to Accumulator
 };
