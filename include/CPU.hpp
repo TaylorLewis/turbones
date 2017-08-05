@@ -167,7 +167,8 @@ private:
     // Instructions
     void ADC(); // Add with Carry
     void AND(const uint16_t& address); // Logical AND
-    void ASL(); // Arithmetic Shift Left
+    void ASL(); // Arithmetic Shift Left (Accumulator)
+    void ASL(const uint16_t& address); // Arithmetic Shift Left
     void BCC(const uint16_t& address); // Branch if Carry Clear
     void BCS(const uint16_t& address); // Branch if Carry Set
     void BEQ(const uint16_t& address); // Branch if Equal
@@ -197,7 +198,8 @@ private:
     void LDA(const uint16_t& address); // Load Accumulator
     void LDX(const uint16_t& address); // Load X Register
     void LDY(const uint16_t& address); // Load Y Register
-    void LSR(); // Logical Shift Right
+    void LSR(); // Logical Shift Right (Accumulator)
+    void LSR(const uint16_t& address); // Logical Shift Right
     void NOP(); // No Operation
     void ORA(const uint16_t& address); // Logical Inclusive OR
     void PHA(); // Push Accumulator
