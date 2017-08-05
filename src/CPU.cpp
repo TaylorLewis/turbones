@@ -116,9 +116,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // unofficial opcode
         //    break;
 
-        //case 0x08:
-        //    PHP();
-        //    break;
+        case 0x08:
+            PHP();
+            break;
 
         case 0x09:
             immediate(&CPU::ORA);
@@ -244,9 +244,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // unofficial opcode
         //    break;
 
-        //case 0x28:
-        //    PLP();
-        //    break;
+        case 0x28:
+            PLP();
+            break;
 
         case 0x29:
             immediate(&CPU::AND);
@@ -500,9 +500,9 @@ void CPU::execute(const uint8_t& opcode) {
         //    // unofficial opcode
         //    break;
 
-        //case 0x68:
-        //    PLA();
-        //    break;
+        case 0x68:
+            PLA();
+            break;
 
         case 0x69:
             immediate(&CPU::ADC);
@@ -1359,16 +1359,18 @@ void CPU::PHA() {
     push(r_a);
 }
 
-void CPU::PHP()
-{
+void CPU::PHP() {
+    push((uint8_t)r_p.to_ulong());
 }
 
-void CPU::PLA()
-{
+void CPU::PLA() {
+    r_a = pop();
+    setZeroFlag(r_a);
+    setNegativeFlag(r_a);
 }
 
-void CPU::PLP()
-{
+void CPU::PLP() {
+    r_p = pop();
 }
 
 void CPU::ROL() {
