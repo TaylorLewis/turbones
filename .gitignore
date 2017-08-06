@@ -1,3 +1,4 @@
+external/
 *.vcxproj
 *.vcxproj.filters
 
