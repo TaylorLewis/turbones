@@ -2,7 +2,7 @@
 
 #include "NES.hpp"
 
-NES::NES() : memory(&mapper), cpu(&memory) {
+NES::NES() : memory(&mapper, &ppu), cpu(&memory) {
 
 }
 
@@ -13,11 +13,15 @@ void NES::load(const std::string& rom_path) {
 
 void NES::run() {
     cpu.powerOn();
-    //ppu.powerOn();
+    ppu.powerOn();
 
     // TODO
 
-    for (int i = 0; i < 5; ++i) { // testing
+    for (int i = 0; i < 50; ++i) { // testing
         cpu.step();
+
+        ppu.step();
+        ppu.step();
+        ppu.step();
     }
 }

@@ -4,6 +4,7 @@
 #include <array>
 
 #include <Mapper0.hpp>
+#include <PPU.hpp>
 
 // Memory.
 //   $0000 -$07FF
@@ -26,13 +27,14 @@
 //    Cartridge space: PRG ROM, PRG RAM, and mapper registers. 
 class Memory {
 public:
-    Memory(Mapper0* map);
+    Memory(Mapper0* mapper, PPU* ppu);
 
     uint8_t read(const uint16_t& address);
     void write(const uint16_t& address, const uint8_t& value);
 
 private:
     Mapper0* mapper;
+    PPU* ppu;
 
     std::array<uint8_t, 0x800> ram;
 };

@@ -2,8 +2,9 @@
 
 #include "Memory.hpp"
 
-Memory::Memory(Mapper0* map) {
-    mapper = map;
+Memory::Memory(Mapper0* mapper, PPU* ppu) {
+    this->mapper = mapper;
+    this->ppu = ppu;
 }
 
 uint8_t Memory::read(const uint16_t& address) {
