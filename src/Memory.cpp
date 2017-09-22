@@ -8,12 +8,18 @@ Memory::Memory(Mapper0* mapper, PPU* ppu) {
 }
 
 uint8_t Memory::read(const uint16_t& address) {
-    if          (address < 0x2000) {
+    if        (address <  0x2000) {
         return ram[address % 0x800];
-    //} else if (address < 0x4000) {
-    //    return PPU.readRegister[0x2000 + (address % 8)];
-    //} else if (address < 0x4018) {
-    //    // APU / IO stuff
+    } else if (address <  0x4000) {
+        return ppu->readRegister(0x2000 + (address % 8));
+    } else if (address == 0x4014) {
+        ppu->readRegister(address);
+    } else if (address == 0x4015) {
+        // apu->readRegister(address);
+    } else if (address == 0x4016) {
+        // Controller 1
+    } else if (address == 0x4017) {
+        // Controller 2
     } else if (address >= 0x6000) {
         return mapper->read(address);
     } else {
@@ -22,12 +28,20 @@ uint8_t Memory::read(const uint16_t& address) {
 }
 
 void Memory::write(const uint16_t& address, const uint8_t& value) {
-    if          (address < 0x2000) {
+    if        (address <  0x2000) {
         ram[address % 0x800] = value;
-    //} else if (address < 0x4000) {
-    //    return PPU.writeRegister[0x2000 + (address % 8)];
-    //} else if (address < 0x4018) {
-    //    // APU / IO stuff
+    } else if (address <  0x4000) {
+        return ppu->writeRegister(0x2000 + (address % 8), value);
+    } else if (address <= 0x4013) {
+        // apu->writeRegister(address, value);
+    } else if (address == 0x4014) {
+        ppu->writeRegister(address, value);
+    } else if (address == 0x4015) {
+        // apu->writeRegister(address, value);
+    } else if (address == 0x4016) {
+        // Controllers
+    } else if (address == 0x4017) {
+        // apu->writeRegister(address, value);
     } else if (address >= 0x6000) {
         return mapper->write(address, value);
     } else {
@@ -35,11 +49,3 @@ void Memory::write(const uint16_t& address, const uint8_t& value) {
             << "\nwith value: " << (int)value << std::endl;
     }
 }
-
-//void Memory::setMapper(Mapper* map) {
-//    this->mapper = map;
-//    std::cout << "Memory::setMapper finish." << std::endl; //d
-//
-//    std::cout << "Memory::setMapper test: " << std::hex << mapper->read(0x6000) << std::endl; //d
-//}
-
