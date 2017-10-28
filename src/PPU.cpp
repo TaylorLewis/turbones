@@ -8,7 +8,7 @@ void PPU::step() {
 
 }
 
-uint8_t PPU::readRegister(const uint16_t & address) {
+uint8_t PPU::readRegister(const uint16_t& address) {
     switch (address) {
         case 0x2002:
             //return readStatus();
@@ -28,7 +28,7 @@ uint8_t PPU::readRegister(const uint16_t & address) {
     return 0; // d
 }
 
-void PPU::writeRegister(const uint16_t & address, const uint8_t & value) {
+void PPU::writeRegister(const uint16_t& address, const uint8_t& value) {
     switch (address) {
         case 0x2000:
             //writeControl(value);
@@ -60,3 +60,13 @@ void PPU::writeRegister(const uint16_t & address, const uint8_t & value) {
     }
 }
 
+
+
+void PPU::writeData(const uint8_t& value) {
+    vram_address = value;
+
+    if (ppuctrl_increment == 0) {
+        vram_address += 1; }
+    else {
+        vram_address += 32; }
+}

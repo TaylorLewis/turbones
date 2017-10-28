@@ -17,6 +17,11 @@ private:
     static constexpr int WIDTH  = 256,
                          HEIGHT = 240;
 
+    // $2007: PPUDATA
+    // VRAM read/write data register.
+    // After access, the video memory address will increment by an amount determined by 'ppuctrl_increment'.
+    void writeData(const uint8_t& value);
+
     // Registers
     // TODO?: Change appropriate values to bools?
     //uint8_t controller;  // $2000: PPUCTRL
