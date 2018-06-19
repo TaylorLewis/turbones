@@ -74,7 +74,11 @@ private:
     uint16_t vram_address_temp; // Temporary vram address. (address of the top left onscreen tile) (15 bit)
     uint8_t  fine_x_scroll;     //                                                                  (3 bit)
     bool     write_flag;        // (0: 1st write; 1: 2nd write)                                     (1 bit)
-    bool     even_frame;        // (0: odd frame; 1: even frame)                                    (1 bit)
+    bool     odd_frame;        // (0: even frame; 1: odd frame)                                    (1 bit)
+
+    // Each frame, 262 scanlines are rendered, each lasting 341 cycles.
+    int scanline; // 0-261
+    int cycle;    // 0-340
 
 
     // Object Attribute Memory, aka Sprite RAM.

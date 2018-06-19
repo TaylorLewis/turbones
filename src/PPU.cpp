@@ -5,6 +5,18 @@ void PPU::powerOn() {
 }
 
 void PPU::step() {
+    ++cycle;
+
+    if (cycle >= 341) { // scanline done
+        ++scanline;
+        cycle = 0;
+
+        if (scanline >= 262) { // frame done
+            scanline = 0;
+            odd_frame ^= 1;
+        }
+    }
+
 
 }
 
