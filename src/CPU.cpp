@@ -89,7 +89,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         case 0x01:
-            indexedIndirect(&CPU::ORA);
+            ORA(indexedIndirect());
             break;
 
         //case 0x02:
@@ -105,11 +105,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x05:
-            zeroPageX(&CPU::ORA);
+            ORA(zeroPageX());
             break;
 
         case 0x06:
-            zeroPage(&CPU::ASL);
+            ASL(zeroPage());
             break;
 
         //case 0x07:
@@ -121,7 +121,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         case 0x09:
-            immediate(&CPU::ORA);
+            ORA(immediate());
             break;
 
         case 0x0A:
@@ -137,11 +137,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x0D:
-            absolute(&CPU::ORA);
+            ORA(absolute());
             break;
 
         case 0x0E:
-            absolute(&CPU::ASL);
+            ASL(absolute());
             break;
 
         //case 0x0F:
@@ -149,11 +149,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x10:
-            relative(&CPU::BPL);
+            BPL(relative());
             break;
 
         case 0x11:
-            indirectIndexed(&CPU::ORA);
+            ORA(indirectIndexed());
             break;
 
         //case 0x12:
@@ -169,11 +169,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x15:
-            zeroPageX(&CPU::ORA);
+            ORA(zeroPageX());
             break;
 
         case 0x16:
-            zeroPageX(&CPU::ASL);
+            ASL(zeroPageX());
             break;
 
         //case 0x17:
@@ -185,7 +185,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         case 0x19:
-            absoluteY(&CPU::ORA);
+            ORA(absoluteY());
             break;
 
         //case 0x1A:
@@ -201,11 +201,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x1D:
-            absoluteX(&CPU::ORA);
+            ORA(absoluteX());
             break;
 
         case 0x1E:
-            absoluteX(&CPU::ASL);
+            ASL(absoluteX());
             break;
 
         //case 0x1F:
@@ -213,11 +213,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x20:
-            absolute(&CPU::JSR);
+            JSR(absolute());
             break;
 
         case 0x21:
-            indexedIndirect(&CPU::AND);
+            AND(indexedIndirect());
             break;
 
         //case 0x22:
@@ -229,15 +229,15 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x24:
-            zeroPage(&CPU::BIT);
+            BIT(zeroPage());
             break;
 
         case 0x25:
-            zeroPage(&CPU::AND);
+            AND(zeroPage());
             break;
 
         case 0x26:
-            zeroPage(&CPU::ROL);
+            ROL(zeroPage());
             break;
 
         //case 0x27:
@@ -249,7 +249,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         case 0x29:
-            immediate(&CPU::AND);
+            AND(immediate());
             break;
 
         case 0x2A:
@@ -261,15 +261,15 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x2C:
-            absolute(&CPU::BIT);
+            BIT(absolute());
             break;
 
         case 0x2D:
-            absolute(&CPU::AND);
+            AND(absolute());
             break;
 
         case 0x2E:
-            absolute(&CPU::ROL);
+            ROL(absolute());
             break;
 
         //case 0x2F:
@@ -277,11 +277,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x30:
-            relative(&CPU::BMI);
+            BMI(relative());
             break;
 
         case 0x31:
-            indirectIndexed(&CPU::AND);
+            AND(indirectIndexed());
             break;
 
         //case 0x32:
@@ -297,11 +297,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x35:
-            zeroPageX(&CPU::AND);
+            AND(zeroPageX());
             break;
 
         case 0x36:
-            zeroPageX(&CPU::ROL);
+            ROL(zeroPageX());
             break;
 
         //case 0x37:
@@ -313,7 +313,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         case 0x39:
-            absoluteY(&CPU::AND);
+            AND(absoluteY());
             break;
 
         //case 0x3A:
@@ -329,11 +329,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x3D:
-            absoluteX(&CPU::AND);
+            AND(absoluteX());
             break;
 
         case 0x3E:
-            absoluteX(&CPU::ROL);
+            ROL(absoluteX());
             break;
 
         //case 0x3F:
@@ -345,7 +345,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         case 0x41:
-            indexedIndirect(&CPU::EOR);
+            EOR(indexedIndirect());
             break;
 
         //case 0x42:
@@ -361,11 +361,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x45:
-            zeroPage(&CPU::EOR);
+            EOR(zeroPage());
             break;
 
         case 0x46:
-            zeroPage(&CPU::LSR);
+            LSR(zeroPage());
             break;
 
         //case 0x47:
@@ -377,7 +377,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         case 0x49:
-            immediate(&CPU::EOR);
+            EOR(immediate());
             break;
 
         case 0x4A:
@@ -389,15 +389,15 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x4C:
-            absolute(&CPU::JMP);
+            JMP(absolute());
             break;
 
         case 0x4D:
-            absolute(&CPU::EOR);
+            EOR(absolute());
             break;
 
         case 0x4E:
-            absolute(&CPU::LSR);
+            LSR(absolute());
             break;
 
         //case 0x4F:
@@ -405,11 +405,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x50:
-            relative(&CPU::BVC);
+            BVC(relative());
             break;
 
         case 0x51:
-            indirectIndexed(&CPU::EOR);
+            EOR(indirectIndexed());
             break;
 
         //case 0x52:
@@ -425,11 +425,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x55:
-            zeroPageX(&CPU::EOR);
+            EOR(zeroPageX());
             break;
 
         case 0x56:
-            zeroPageX(&CPU::LSR);
+            LSR(zeroPageX());
             break;
 
         //case 0x57:
@@ -441,7 +441,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         case 0x59:
-            absoluteY(&CPU::EOR);
+            EOR(absoluteY());
             break;
 
         //case 0x5A:
@@ -457,11 +457,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x5D:
-            absoluteX(&CPU::EOR);
+            EOR(absoluteX());
             break;
 
         case 0x5E:
-            absoluteX(&CPU::LSR);
+            LSR(absoluteX());
             break;
 
         //case 0x5F:
@@ -473,7 +473,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         case 0x61:
-            indexedIndirect(&CPU::ADC);
+            ADC(indexedIndirect());
             break;
 
         //case 0x62:
@@ -489,11 +489,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x65:
-            zeroPage(&CPU::ADC);
+            ADC(zeroPage());
             break;
 
         case 0x66:
-            zeroPage(&CPU::ROR);
+            ROR(zeroPage());
             break;
 
         //case 0x67:
@@ -505,7 +505,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         case 0x69:
-            immediate(&CPU::ADC);
+            ADC(immediate());
             break;
 
         case 0x6A:
@@ -517,15 +517,15 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x6C:
-            indirect(&CPU::JMP);
+            JMP(indirect());
             break;
 
         case 0x6D:
-            absolute(&CPU::ADC);
+            ADC(absolute());
             break;
 
         case 0x6E:
-            absolute(&CPU::ROR);
+            ROR(absolute());
             break;
 
         //case 0x6F:
@@ -533,11 +533,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x70:
-            relative(&CPU::BVS);
+            BVS(relative());
             break;
 
         case 0x71:
-            indirectIndexed(&CPU::ADC);
+            ADC(indirectIndexed());
             break;
 
         //case 0x72:
@@ -553,11 +553,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x75:
-            zeroPageX(&CPU::ADC);
+            ADC(zeroPageX());
             break;
 
         case 0x76:
-            zeroPageX(&CPU::ROR);
+            ROR(zeroPageX());
             break;
 
         //case 0x77:
@@ -569,7 +569,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         case 0x79:
-            absoluteY(&CPU::ADC);
+            ADC(absoluteY());
             break;
 
         //case 0x7A:
@@ -585,11 +585,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x7D:
-            absoluteX(&CPU::ADC);
+            ADC(absoluteX());
             break;
 
         case 0x7E:
-            absoluteX(&CPU::ROR);
+            ROR(absoluteX());
             break;
 
         //case 0x7F:
@@ -601,7 +601,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x81:
-            indexedIndirect(&CPU::STA);
+            STA(indexedIndirect());
             break;
 
         //case 0x82:
@@ -613,15 +613,15 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x84:
-            zeroPage(&CPU::STY);
+            STY(zeroPage());
             break;
 
         case 0x85:
-            zeroPage(&CPU::STA);
+            STA(zeroPage());
             break;
 
         case 0x86:
-            zeroPage(&CPU::STX);
+            STX(zeroPage());
             break;
 
         //case 0x87:
@@ -645,15 +645,15 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x8C:
-            absolute(&CPU::STY);
+            STY(absolute());
             break;
 
         case 0x8D:
-            absolute(&CPU::STA);
+            STA(absolute());
             break;
 
         case 0x8E:
-            absolute(&CPU::STX);
+            STX(absolute());
             break;
 
         //case 0x8F:
@@ -661,11 +661,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x90:
-            relative(&CPU::BCC);
+            BCC(relative());
             break;
 
         case 0x91:
-            indirectIndexed(&CPU::STA);
+            STA(indirectIndexed());
             break;
 
         //case 0x92:
@@ -677,15 +677,15 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x94:
-            zeroPageX(&CPU::STY);
+            STY(zeroPageX());
             break;
 
         case 0x95:
-            zeroPageX(&CPU::STA);
+            STA(zeroPageX());
             break;
 
         case 0x96:
-            zeroPageY(&CPU::STX);
+            STX(zeroPageY());
             break;
 
         //case 0x97:
@@ -697,7 +697,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         case 0x99:
-            absoluteY(&CPU::STA);
+            STA(absoluteY());
             break;
 
         case 0x9A:
@@ -713,7 +713,7 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0x9D:
-            absoluteX(&CPU::STA);
+            STA(absoluteX());
             break;
 
         //case 0x9E:
@@ -725,15 +725,15 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0xA0:
-            immediate(&CPU::LDY);
+            LDY(immediate());
             break;
 
         case 0xA1:
-            indexedIndirect(&CPU::LDA);
+            LDA(indexedIndirect());
             break;
 
         case 0xA2:
-            immediate(&CPU::LDX);
+            LDX(immediate());
             break;
 
         //case 0xA3:
@@ -741,15 +741,15 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0xA4:
-            zeroPage(&CPU::LDY);
+            LDY(zeroPage());
             break;
 
         case 0xA5:
-            zeroPage(&CPU::LDA);
+            LDA(zeroPage());
             break;
 
         case 0xA6:
-            zeroPage(&CPU::LDX);
+            LDX(zeroPage());
             break;
 
         //case 0xA7:
@@ -761,7 +761,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         case 0xA9:
-            immediate(&CPU::LDA);
+            LDA(immediate());
             break;
 
         case 0xAA:
@@ -773,15 +773,15 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0xAC:
-            absolute(&CPU::LDY);
+            LDY(absolute());
             break;
 
         case 0xAD:
-            absolute(&CPU::LDA);
+            LDA(absolute());
             break;
 
         case 0xAE:
-            absolute(&CPU::LDX);
+            LDX(absolute());
             break;
 
         //case 0xAF:
@@ -789,11 +789,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0xB0:
-            relative(&CPU::BCS);
+            BCS(relative());
             break;
 
         case 0xB1:
-            indirectIndexed(&CPU::LDA);
+            LDA(indirectIndexed());
             break;
 
         //case 0xB2:
@@ -805,15 +805,15 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0xB4:
-            zeroPageX(&CPU::LDY);
+            LDY(zeroPageX());
             break;
 
         case 0xB5:
-            zeroPageX(&CPU::LDA);
+            LDA(zeroPageX());
             break;
 
         case 0xB6:
-            zeroPageY(&CPU::LDX);
+            LDX(zeroPageY());
             break;
 
         //case 0xB7:
@@ -825,7 +825,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         case 0xB9:
-            absoluteY(&CPU::LDA);
+            LDA(absoluteY());
             break;
 
         case 0xBA:
@@ -837,15 +837,15 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0xBC:
-            absoluteX(&CPU::LDY);
+            LDY(absoluteX());
             break;
 
         case 0xBD:
-            absoluteX(&CPU::LDA);
+            LDA(absoluteX());
             break;
 
         case 0xBE:
-            absoluteY(&CPU::LDX);
+            LDX(absoluteY());
             break;
 
         //case 0xBF:
@@ -853,11 +853,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0xC0:
-            immediate(&CPU::CPY);
+            CPY(immediate());
             break;
 
         case 0xC1:
-            indexedIndirect(&CPU::CMP);
+            CMP(indexedIndirect());
             break;
 
         //case 0xC2:
@@ -869,15 +869,15 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0xC4:
-            zeroPage(&CPU::CPY);
+            CPY(zeroPage());
             break;
 
         case 0xC5:
-            zeroPage(&CPU::CMP);
+            CMP(zeroPage());
             break;
 
         case 0xC6:
-            zeroPage(&CPU::DEC);
+            DEC(zeroPage());
             break;
 
         //case 0xC7:
@@ -889,7 +889,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         case 0xC9:
-            immediate(&CPU::CMP);
+            CMP(immediate());
             break;
 
         case 0xCA:
@@ -901,15 +901,15 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0xCC:
-            absolute(&CPU::CPY);
+            CPY(absolute());
             break;
 
         case 0xCD:
-            absolute(&CPU::CMP);
+            CMP(absolute());
             break;
 
         case 0xCE:
-            absolute(&CPU::DEC);
+            DEC(absolute());
             break;
 
         //case 0xCF:
@@ -917,11 +917,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0xD0:
-            relative(&CPU::BNE);
+            BNE(relative());
             break;
 
         case 0xD1:
-            indirectIndexed(&CPU::CMP);
+            CMP(indirectIndexed());
             break;
 
         //case 0xD2:
@@ -937,11 +937,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0xD5:
-            zeroPageX(&CPU::CMP);
+            CMP(zeroPageX());
             break;
 
         case 0xD6:
-            zeroPageX(&CPU::DEC);
+            DEC(zeroPageX());
             break;
 
         //case 0xD7:
@@ -953,7 +953,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         case 0xD9:
-            absoluteY(&CPU::CMP);
+            CMP(absoluteY());
             break;
 
         //case 0xDA:
@@ -969,11 +969,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0xDD:
-            absoluteX(&CPU::CMP);
+            CMP(absoluteX());
             break;
 
         case 0xDE:
-            absoluteX(&CPU::DEC);
+            DEC(absoluteX());
             break;
 
         //case 0xDF:
@@ -981,11 +981,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0xE0:
-            immediate(&CPU::CPX);
+            CPX(immediate());
             break;
 
         case 0xE1:
-            indexedIndirect(&CPU::SBC);
+            SBC(indexedIndirect());
             break;
 
         //case 0xE2:
@@ -997,15 +997,15 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0xE4:
-            zeroPage(&CPU::CPX);
+            CPX(zeroPage());
             break;
 
         case 0xE5:
-            zeroPage(&CPU::SBC);
+            SBC(zeroPage());
             break;
 
         case 0xE6:
-            zeroPage(&CPU::INC);
+            INC(zeroPage());
             break;
 
         //case 0xE7:
@@ -1017,7 +1017,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         case 0xE9:
-            immediate(&CPU::SBC);
+            SBC(immediate());
             break;
 
         case 0xEA:
@@ -1029,15 +1029,15 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0xEC:
-            absolute(&CPU::CPX);
+            CPX(absolute());
             break;
 
         case 0xED:
-            absolute(&CPU::SBC);
+            SBC(absolute());
             break;
 
         case 0xEE:
-            absolute(&CPU::INC);
+            INC(absolute());
             break;
 
         //case 0xEF:
@@ -1045,11 +1045,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0xF0:
-            relative(&CPU::BEQ);
+            BEQ(relative());
             break;
 
         case 0xF1:
-            indirectIndexed(&CPU::SBC);
+            SBC(indirectIndexed());
             break;
 
         //case 0xF2:
@@ -1065,11 +1065,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0xF5:
-            zeroPageX(&CPU::SBC);
+            SBC(zeroPageX());
             break;
 
         case 0xF6:
-            zeroPageX(&CPU::INC);
+            INC(zeroPageX());
             break;
 
         //case 0xF7:
@@ -1081,7 +1081,7 @@ void CPU::execute(const uint8_t& opcode) {
             break;
 
         case 0xF9:
-            absolute(&CPU::SBC);
+            SBC(absolute());
             break;
 
         //case 0xFA:
@@ -1097,11 +1097,11 @@ void CPU::execute(const uint8_t& opcode) {
         //    break;
 
         case 0xFD:
-            absoluteX(&CPU::SBC);
+            SBC(absoluteX());
             break;
 
         case 0xFE:
-            absoluteX(&CPU::INC);
+            INC(absoluteX());
             break;
 
         //case 0xFF:

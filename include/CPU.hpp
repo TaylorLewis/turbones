@@ -84,83 +84,77 @@ private:
 
 
 
-    typedef void (CPU::*Instruction)(const uint16_t&);
-
     // Addressing Modes. Gives an address to an instruction.
     // Many instructions have multiple opcodes, for each addressing mode they use.
 
     // Operand is an 8-bit constant value.
-    void immediate(Instruction instruction) {
+    uint16_t immediate() {
         const uint16_t address = pc;
         ++pc;
-        (this->*instruction)(address);
+        return address;
     }
     // Operand is an 8-bit address, addressing only the first 0x100 bytes of memory.
-    void zeroPage(Instruction instruction) {
+    uint16_t zeroPage() {
         const uint16_t address = fetch();
-        (this->*instruction)(address);
+        return address;
     }
     // Like Zero Page, but adds X register to the address.
-    void zeroPageX(Instruction instruction) {
+    uint16_t zeroPageX() {
         const uint16_t address = fetch() + r_x;
-        (this->*instruction)(address);
+        return address;
     }
     // Like Zero Page, but adds Y register to the address.
-    void zeroPageY(Instruction instruction) {
+    uint16_t zeroPageY() {
         const uint16_t address = fetch() + r_y;
-        (this->*instruction)(address);
+        return address;
     }
     // Corresponds to branch instructions. The (signed) 8-bit operand is an offset,
     // to be added to the PC if the condition is true, or ignored if false.
-    void relative(Instruction instruction) {
+    uint16_t relative() {
         const uint16_t address = pc;
         ++pc;
-        (this->*instruction)(address);
+        return address;
     }
     // Operand is a full 16-bit address.
-    void absolute(Instruction instruction) {
+    uint16_t absolute() {
         const uint16_t address = fetch16();
-        (this->*instruction)(address);
+        return address;
     }
     // Like Absolute, but adds X register to the address.
-    void absoluteX(Instruction instruction) {
+    uint16_t absoluteX() {
         const uint16_t address = fetch16() + r_x;
-        (this->*instruction)(address);
+        return address;
     }
     // Like Absolute, but adds Y register to the address.
-    void absoluteY(Instruction instruction) {
+    uint16_t absoluteY() {
         const uint16_t address = fetch16() + r_y;
-        (this->*instruction)(address);
+        return address;
     }
     // Operand is a 16-bit address points to another address.
-    void indirect(Instruction instruction) {
+    uint16_t indirect() {
         const uint16_t firstAddress = fetch16();
         const uint16_t secondAddress = read16(firstAddress);
-        (this->*instruction)(secondAddress);
+        return secondAddress;
     }
     // Operand is an 8-bit address to which the X register is added,
     // pointing to another address.
-    void indexedIndirect(Instruction instruction) {
+    uint16_t indexedIndirect() {
         const uint16_t firstAddress = fetch() + r_x;
         const uint16_t secondAddress = read16(firstAddress);
-        (this->*instruction)(secondAddress);
+        return secondAddress;
     }
     // Operand is an 8-bit address pointing to another address,
     // (the latter) to which the Y register is added.
-    void indirectIndexed(Instruction instruction) {
+    uint16_t indirectIndexed() {
         const uint16_t firstAddress = fetch();
         const uint16_t secondAddress = read16(firstAddress) + r_y;
-        (this->*instruction)(secondAddress);
+        return secondAddress;
     }
 
     //// No operands. All the necessary information is in the opcode.
-    //void implied(void (CPU::*instruction)()) {
-    //    (this->*instruction)();
-    //}
+    //void implied();
     //// Special type of Implied, operating directing on the accumulator register. May be unnecessary.
-    //void accumulator(void (CPU::*instruction)()) {
-    //    (this->*instruction)();
-    //}
+    //void accumulator();
 
 
 
